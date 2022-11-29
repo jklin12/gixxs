@@ -19,10 +19,10 @@
 <body>
     <div class="wrapper d-flex flex-column vh-100 bg-light">
         <header class="header">
-            <a class="header-brand ms-3 fw-semibold d-none d-md-block" href="https://sijingga.trenggalekkab.go.id/main">
+            <a class="header-brand ms-3 fw-semibold d-none d-md-block" href="#">
                 ---
             </a>
-            <a class="header-brand ms-3 fw-semibold d-block d-md-none" href="https://sijingga.trenggalekkab.go.id/main">
+            <a class="header-brand ms-3 fw-semibold d-block d-md-none" href="#">
                 ---
             </a>
             <ul class="header-nav d-none d-md-flex">
