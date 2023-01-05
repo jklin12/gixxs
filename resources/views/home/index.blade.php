@@ -108,46 +108,28 @@
     </section>
 
     <section class="container grid grid-cols-4 gap-8 mt-20">
-        <a href="#" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
+        <a href="{{ route('ijinLingkungan') }}" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
             <img src="assets/img/undraw_navigator.png" class="mb-4 object-contain h-28">
-            <h3 class="text-center font-semibold mb-2">Jalan &amp; Jembatan</h3>
-            <h4 class="text-center text-gray-700 text-sm">Peta Jalan &amp; Jembatan Kabupaten Kutai Timur</h4>
+            <h3 class="text-center font-semibold mb-2">Ijin Lingkungan</h3>
+            <h4 class="text-center text-gray-700 text-sm">Ijin Lingkungan &amp; Jembatan Kabupaten Kutai Timur</h4>
         </a>
-        <a href="#" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
+        <a href="{{ route('kes') }}" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
             <img src="assets/img/undraw_town.png" class="mb-4 object-contain h-28">
-            <h3 class="text-center font-semibold mb-2">Penggunaan Lahan</h3>
-            <h4 class="text-center text-gray-700 text-sm">Peta Pemanfaatan Lahan Di Kabupaten Kutai Timur</h4>
+            <h3 class="text-center font-semibold mb-2">Kawasan Ekosistem Esensial</h3>
+            <h4 class="text-center text-gray-700 text-sm">Kawasan Ekosistem Esensial Di Kabupaten Kutai Timur</h4>
         </a>
-        <a href="#" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
+        <a href="{{ route('dkl') }}" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
             <img src="assets/img/undraw_building.png" class="mb-4 object-contain h-28">
-            <h3 class="text-center font-semibold mb-2">Infrastruktur</h3>
-            <h4 class="text-center text-gray-700 text-sm">Peta Infrastruktur Fisik Kabupaten Kutai Timur</h4>
+            <h3 class="text-center font-semibold mb-2">Dokumen Kawasan Lingkungan</h3>
+            <h4 class="text-center text-gray-700 text-sm">Dokumen Kawasan Lingkungan Kabupaten Kutai Timur</h4>
         </a>
-        <a href="#" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
-            <img src="assets/img/undraw_study.png" class="mb-4 object-contain h-28">
-            <h3 class="text-center font-semibold mb-2">Sekolah</h3>
-            <h4 class="text-center text-gray-700 text-sm">Peta Persebaran Sekolah</h4>
-        </a>
-        <a href="#" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
-            <img src="assets/img/undraw_disaster.png" class="mb-4 object-contain h-28">
-            <h3 class="text-center font-semibold mb-2">Bencana</h3>
-            <h4 class="text-center text-gray-700 text-sm">Peta Kawasan Rawan Bencana</h4>
-        </a>
-        <a href="#" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
-            <img src="assets/img/undraw_health.png" class="mb-4 object-contain h-28">
-            <h3 class="text-center font-semibold mb-2">Kesehatan</h3>
-            <h4 class="text-center text-gray-700 text-sm">Peta Persebaran Fasilitas Kesehatan</h4>
-        </a>
-        <a href="#" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
+       
+        <a href="{{ route('sppl') }}" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
             <img src="assets/img/undraw_water.png" class="mb-4 object-contain h-28">
-            <h3 class="text-center font-semibold mb-2">Muka Air Tanah</h3>
-            <h4 class="text-center text-gray-700 text-sm">Peta Penurunan Muka Air Tanah</h4>
+            <h3 class="text-center font-semibold mb-2">SPPL</h3>
+            <h4 class="text-center text-gray-700 text-sm">SPPL</h4>
         </a>
-        <a href="#" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
-            <img src="assets/img/undraw_garden.png" class="mb-4 object-contain h-28">
-            <h3 class="text-center font-semibold mb-2">Pariwisata</h3>
-            <h4 class="text-center text-gray-700 text-sm">Peta Lokasi Pariwisata Kabupaten Kutai Timur</h4>
-        </a>
+       
     </section>
 
     <section class="pt-20 pb-20 container" id="satu-peta">

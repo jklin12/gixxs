@@ -1,12 +1,12 @@
 <?php
 $my_config = array(
-    'site_name' => "----",
-    'site_desc' => "---",
+    'site_name' => "Geoportal Lingkungan Hidup",
+    'site_desc' => "Dinas Lingkungan Hidup Kabupaten Kutai Timur",
     'contact' => array(
-        'name' => '---',
+        'name' => 'Dinas Lingkungan Hidup Kabupaten Kutai Timur',
         'email' => 'john.doe@website.com',
         'phone' => '+1-906-123-4567',
-        'address' => 'JL ABCD',
+        'address' => 'JL .....',
     )
 );
 return $my_config;

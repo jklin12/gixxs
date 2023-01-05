@@ -17,18 +17,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('login');
-});
+ 
 Route::get('login', function () {
     return view('login');
 })->name('login');
 Route::get('peta', [PetaController::class, 'index'])->name('peta');
+Route::get('peta_mobile', [PetaController::class, 'petaMobile'])->name('peta.mobile');
 Route::post('ajax', [PetaController::class, 'ajax'])->name('peta.ajax');
 Route::post('login', [AuthenticationController::class, 'login'])->name('login.action');
 Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/ijin_lingkungan', [HomeController::class, 'ijinLingkungan'])->name('ijinLingkungan');
 Route::get('/ijin_lingkungan/{data_id}', [HomeController::class, 'ijinLingkunganDetail'])->name('ijinLingkungan.detail');
 Route::get('/kawasan_es', [HomeController::class, 'kes'])->name('kes');

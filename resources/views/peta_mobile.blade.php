@@ -18,26 +18,8 @@
 
 <body>
     <div class="wrapper d-flex flex-column vh-100 bg-light">
-        <header class="header">
-            <a class="header-brand ms-3 fw-semibold d-none d-md-block" href="#">
-                {{ config('site.site_name');  }}
-            </a>
-            <a class="header-brand ms-3 fw-semibold d-block d-md-none" href="#">
-                {{ config('site.site_desc');  }}
-            </a>
-            <ul class="header-nav d-none d-md-flex">
-                <li class="nav-item">
-                    <a class="nav-link webgis-link" href="{{ route('home')}}">
-                        <i class="fas fa-home me-2"></i>
-                        Beranda
-                    </a>
-                </li>
-
-            </ul>
-
-        </header>
         <div class="body flex-grow-1 flex-row d-flex">
-            <div class="sidebar sidebar-narrow sidebar-fixed">
+            <div class="sidebar sidebar-narrow sidebar-fixed" style="top:0px">
                 <ul class="sidebar-nav">
                     <li class="nav-item">
                         <a class="nav-link sijingga-sidebar-menu" role="button" title="Daftar Layer" data-target="sidebar-layer">
@@ -65,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div id="sidebar-layer" class="sidebar sidebar-lg sidebar-fixed sijingga-sidebar ">
+    <div id="sidebar-layer" class="sidebar sidebar-lg sidebar-fixed sijingga-sidebar "  >
         <ul class="sidebar-nav">
             @foreach($menu as $kmenu => $vmenu)
             @foreach($vmenu['menu_data'] as $kcat => $vcat)
@@ -91,7 +73,7 @@
         </ul>
     </div>
 
-    <div class="sidebar sidebar-lg sidebar-end sidebar-fixed detail-sidebar ">
+    <div class="sidebar sidebar-lg sidebar-end sidebar-fixed detail-sidebar "  style="top:0px">
         <div class="sidebar-header d-flex justify-content-between detail-header">
             <h5 class="mb-0 text-start">Detail</h5>
             <button type="button" id="close-delete" class="btn-close text-white" aria-label="Close"></button>
@@ -108,7 +90,9 @@
                 $('.detail-sidebar').removeClass('detail-sidebar-show')
             })
             $(".sijingga-sidebar-menu").on('click', function() {
+                $('.sijingga-sidebar').css('top' , '0px')
                 var target = $(this).data('target');
+
                 if ($('#' + target).hasClass('sijingga-sidebar-show')) {
                     $('#' + target).removeClass('sijingga-sidebar-show')
                 } else {
