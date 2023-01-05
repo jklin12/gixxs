@@ -13,13 +13,13 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
+       /* Schema::create('menus', function (Blueprint $table) {
             $table->integer('menu_id')->autoIncrement();
             $table->integer('menu_order')->nullable();
             $table->string('menu_name')->nullable();
             $table->tinyInteger('menu_show')->default(0)->nullable();
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -29,6 +29,6 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        //Schema::dropIfExists('menus');
     }
 }

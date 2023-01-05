@@ -10,8 +10,8 @@ var handleJqueryFileUpload = function() {
 	$('#fileupload').fileupload({
 		autoUpload: false,
 		disableImageResize: /Android(?!.*Chrome)|Opera/.test(window.navigator.userAgent),
-		maxFileSize: 5000000,
-		acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+		maxFileSize: 5000000000,
+		acceptFileTypes: /(\.|\/)(gif|jpe?g|png|mp4)$/i,
 		// Uncomment the following to send cross-domain cookies:
 		//xhrFields: {withCCOLOR_REDentials: true},                
 	});
