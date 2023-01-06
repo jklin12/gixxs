@@ -23,8 +23,10 @@ class HomeController extends Controller
 
         $load['title'] = $title;
 
-        $data = IjinLingkungan::paginate();
+        $data = IjinLingkungan::get();
 
+        //echo json_encode($data->toArray());
+        //dd($data->toArray());
         $load['data'] = $data;
 
         return view('home/ijinLingkungan', $load);
@@ -40,6 +42,7 @@ class HomeController extends Controller
         $data = KawasanEkosistemEsensial::get();
 
         $load['data'] = $data;
+        //echo json_encode($data->toArray());die;
         //dd($data);
 
         return view('home/kes', $load);
@@ -53,6 +56,7 @@ class HomeController extends Controller
         $load['title'] = $title;
 
         $data = DokumenKajianLingkungan::get();
+        //echo json_encode($data->toArray());die;
 
         $load['data'] = $data;
 
@@ -66,7 +70,7 @@ class HomeController extends Controller
         $load['title'] = $title;
 
         $data = Sppl::get();
-
+        //echo json_encode($data->toArray());die;
         $load['data'] = $data;
 
         return view('home/sppl', $load);

@@ -49,7 +49,7 @@
                             <td>{{ $value->il_alamat_perwakilan}}</td>
                             <td>{{ $value->il_alamat_cabang}}</td>
                             <td>{{ $value->il_lokasi}}</td>
-                            <td class="text-center"><a href="#" class="btn btn-primary"><i class="fas fa-download"></i></a></td>
+                            <td class="text-center"><a href="{{ $value->il_file ?? 'uploads/file_1.jpeg'}}" class="btn btn-primary"><i class="fas fa-download"></i></a></td>
 
                         </tr>
                         @endforeach
