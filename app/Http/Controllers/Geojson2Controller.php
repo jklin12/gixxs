@@ -214,6 +214,6 @@ class Geojson2Controller extends Controller
         GeojsonProperties::where('geojson_id',$id)->delete();
 
         session()->flash('success', 'Hapus Data Suksess');
-        return redirect()->route('dkl.index');
+        return redirect()->route('geojson.index');
     }
 }
