@@ -20,7 +20,7 @@ class Geojson2Controller extends Controller
         $subtitle = '';
 
         $data = $geojsonData = GeojsonCategory::orderByDesc('created_at')
-            ->paginate(5);
+            ->paginate(10);
 
         $load['title'] = $title;
         $load['subtitle'] = $subtitle;
@@ -55,7 +55,7 @@ class Geojson2Controller extends Controller
      */
     public function store(Request $request)
     {
-         
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'display' => ['required'],
@@ -69,7 +69,6 @@ class Geojson2Controller extends Controller
             $fileName = time() . rand(1, 99) . '.' . $request->file('file')->extension();
             $request->file('file')->move(public_path('uploads/geojson'), $fileName);
             $files['name'] = $fileName;
-         
         }
 
         $geojson = '';
@@ -210,6 +209,11 @@ class Geojson2Controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleted = GeojsonCategory::where('category_id', $id)->delete();
+        GeojsonData::where('geojson_id',$id)->delete();
+        GeojsonProperties::where('geojson_id',$id)->delete();
+
+        session()->flash('success', 'Hapus Data Suksess');
+        return redirect()->route('dkl.index');
     }
 }
