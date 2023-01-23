@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $value->sppl_name }} </td>
-                            <td class="text-center"><a href="/storage/{{ $value->sppl_file }}" class="btn btn-primary"><i class="fas fa-download"></i></a></td>
+                            <td class="text-center"><a href="/storage/{{ $value->sppl_file }}" target="_blank"  class="btn btn-primary"><i class="fas fa-download"></i></a></td>
 
                         </tr>
                         @endforeach

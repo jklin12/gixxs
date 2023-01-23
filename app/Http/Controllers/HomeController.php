@@ -23,7 +23,7 @@ class HomeController extends Controller
 
         $load['title'] = $title;
 
-        $data = IjinLingkungan::get();
+        $data = IjinLingkungan::orderByDesc('created_at')->get();
 
         //echo json_encode($data->toArray());
         //dd($data->toArray());
@@ -39,7 +39,7 @@ class HomeController extends Controller
 
         $load['title'] = $title;
 
-        $data = KawasanEkosistemEsensial::get();
+        $data = KawasanEkosistemEsensial::orderByDesc('created_at')->get();
 
         $load['data'] = $data;
         //echo json_encode($data->toArray());die;
@@ -55,7 +55,7 @@ class HomeController extends Controller
 
         $load['title'] = $title;
 
-        $data = DokumenKajianLingkungan::get();
+        $data = DokumenKajianLingkungan::orderByDesc('created_at')->get();
         //echo json_encode($data->toArray());die;
 
         $load['data'] = $data;
@@ -69,7 +69,7 @@ class HomeController extends Controller
 
         $load['title'] = $title;
 
-        $data = Sppl::get();
+        $data = Sppl::orderByDesc('created_at')->get();
         //echo json_encode($data->toArray());die;
         $load['data'] = $data;
 
