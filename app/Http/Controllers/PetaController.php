@@ -13,8 +13,8 @@ class PetaController extends Controller
     public function index()
     {
         $geojsonData = GeojsonCategory::join('geojson_data', 'geojson_categories.category_id', '=', 'geojson_data.geojson_id')
-            ->join('menus', 'geojson_categories.menu_id', '=', 'menus.menu_id')
-            //->where('category_id', 9)
+            //->join('menus', 'geojson_categories.menu_id', '=', 'menus.menu_id')
+            ->where('display', 1)
             ->orderBy('category_id')
             ->get();
 
