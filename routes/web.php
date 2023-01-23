@@ -2,9 +2,14 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DklController;
+use App\Http\Controllers\Geojson2Controller;
 use App\Http\Controllers\GeojsonController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IjinLingkunganController;
+use App\Http\Controllers\KesController;
 use App\Http\Controllers\PetaController;
+use App\Http\Controllers\SpplController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,10 +26,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('login', function () {
     return view('login');
 })->name('login');
+
 Route::get('peta', [PetaController::class, 'index'])->name('peta');
 Route::get('peta_mobile', [PetaController::class, 'petaMobile'])->name('peta.mobile');
 Route::post('ajax', [PetaController::class, 'ajax'])->name('peta.ajax');
-Route::post('login', [AuthenticationController::class, 'login'])->name('login.action');
+Route::post('dologin', [AuthenticationController::class, 'login'])->name('login.action');
 Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/ijin_lingkungan', [HomeController::class, 'ijinLingkungan'])->name('ijinLingkungan');
@@ -37,8 +43,15 @@ Route::get('/sppl', [HomeController::class, 'sppl'])->name('sppl');
 Route::get('/sppl/{data_id}', [HomeController::class, 'spplDetail'])->name('sppl.detail');
 
 Route::middleware(['auth', 'user-access:super-admin'])->group(function () {
-    Route::get('geojson/form', function () {
+    /*Route::get('geojson/form', function () {
         return view('geojson.form');
     })->name('geojson.form');
-    Route::post('geojson/store', [GeojsonController::class, 'store'])->name('geojson.store');
+    Route::post('geojson/store', [GeojsonController::class, 'store'])->name('geojson.store');*/
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
+    Route::resource('dashboard/ijin_lingkungan', IjinLingkunganController::class);
+    Route::resource('dashboard/kes', KesController::class);
+    Route::resource('dashboard/geojson', Geojson2Controller::class);
+    Route::resource('dashboard/dkl', DklController::class);
+    Route::resource('dashboard/sppl', SpplController::class);
 });

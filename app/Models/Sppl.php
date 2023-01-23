@@ -13,7 +13,7 @@ class Sppl extends Model
     protected $primaryKey = 'sppl_id';
 
     protected $fillable = [
-        'sppl_nama',
+        'sppl_name',
         'sppl_file',
     ];
 }

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Color Admin | Login Page</title>
+    <title>{{ config('site.site_name');  }}</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -29,9 +29,9 @@
             <div class="news-feed">
                 <div class="news-image" style="background-image: url(assets/img/login-bg/login-bg-11.jpg)"></div>
                 <div class="news-caption">
-                    <h4 class="caption-title"><b>Color</b> Admin App</h4>
+                    <h4 class="caption-title">{{ config('site.site_name');  }}</h4>
                     <p>
-                        Download the Color Admin app for iPhone®, iPad®, and Android™. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        {{ config('site.site_desc');  }}
                     </p>
                 </div>
             </div>
@@ -39,10 +39,14 @@
             <!-- begin right-content -->
             <div class="right-content">
                 <!-- begin login-header -->
+
                 <div class="login-header">
+                    <div class="text-center mb-2">
+                        <img src="assets/img/logo.png" alt="logo" width="100" class="">
+                    </div>
                     <div class="brand">
-                        <span class="logo"></span> <b>Color</b> Admin
-                        <small>responsive bootstrap 4 admin template</small>
+                        <h4>{{ config('site.site_name');  }}</h4>
+                        <small> {{ config('site.site_desc');  }}</small>
                     </div>
 
                 </div>
@@ -54,22 +58,22 @@
                 @endif
                 <!-- begin login-content -->
                 <div class="login-content">
-                    <form action="{{ route('login.action') }}" method="POST" class="margin-bottom-0">
+                    <form action="{{ route('login.action' )}}" method="post" class="margin-bottom-0">
                         @csrf
                         <div class="form-group m-b-15">
-                            <input type="text" name="email" class="form-control form-control-lg" placeholder="Email Address" required value="{{ old('username') }}"/>
+                            <input type="text" name="email" class="form-control form-control-lg" placeholder="Email Address" required value="{{ old('username') }}" />
                         </div>
                         <div class="form-group m-b-15">
                             <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required />
                         </div>
-                      
+
                         <div class="login-buttons">
                             <button type="submit" class="btn btn-success btn-block btn-lg">Sign me in</button>
                         </div>
-                        
+
                         <hr />
                         <p class="text-center text-grey-darker mb-0">
-                            &copy; Color Admin All Right Reserved 2020
+                            &copy;{{ config('site.site_desc').' '.date('Y') }}
                         </p>
                     </form>
                 </div>

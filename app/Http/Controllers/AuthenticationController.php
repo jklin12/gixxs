@@ -14,7 +14,7 @@ class AuthenticationController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        //$this->middleware('guest')->except('logout');
     }
 
     public function login(Request $request)
@@ -27,8 +27,9 @@ class AuthenticationController extends Controller
         ]);
 
         if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            if (auth()->user()->type == 'super-admin') {
-                return redirect()->route('dashboard');
+            //dd(auth()->user()->type);
+            if (auth()->user()->level >= 9) {
+                return redirect()->route('dashboard.index');
             }
         } else {
             return back()->withErrors([
@@ -42,6 +43,6 @@ class AuthenticationController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/login');
     }
 }
