@@ -51,7 +51,7 @@ class DataController extends Controller
     {
 
         $response['status'] = True;
-        $response['data'] = IjinLingkungan::orderByDesc('created_at')->paginate(10);
+        $response['data'] = IjinLingkungan::orderByDesc('created_at')->paginate(20);
 
         return response()->json($response, 200);
     }
@@ -60,7 +60,7 @@ class DataController extends Controller
     {
 
         $response['status'] = True;
-        $response['data'] = KawasanEkosistemEsensial::orderByDesc('created_at')->paginate(10);
+        $response['data'] = KawasanEkosistemEsensial::orderByDesc('created_at')->paginate(20);
 
         return response()->json($response, 200);
     }
@@ -68,7 +68,7 @@ class DataController extends Controller
     {
 
         $response['status'] = True;
-        $response['data'] = DokumenKajianLingkungan::orderByDesc('created_at')->paginate(10);
+        $response['data'] = DokumenKajianLingkungan::orderByDesc('created_at')->paginate(20);
 
         return response()->json($response, 200);
     }
@@ -76,7 +76,7 @@ class DataController extends Controller
     {
 
         $response['status'] = True;
-        $response['data'] = Sppl::orderByDesc('created_at')->paginate(10);
+        $response['data'] = Sppl::orderByDesc('created_at')->paginate(20);
 
         return response()->json($response, 200);
     }
