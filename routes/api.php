@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\DataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('geojson',[DataController::class,'geojson']);
+Route::get('ijin_lingkungan',[DataController::class,'ijinLingkungan']);
+Route::get('kes',[DataController::class,'kes']);
+Route::get('dkl',[DataController::class,'dkl']);
+Route::get('sppl',[DataController::class,'sppl']);

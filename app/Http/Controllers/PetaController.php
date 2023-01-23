@@ -83,6 +83,7 @@ class PetaController extends Controller
         $load['geojson'] = $susunDataBaru;
         $load['style'] = $styleData;
         $load['menu'] = $menuData;
+        
         return view('peta', $load);
     }
 
