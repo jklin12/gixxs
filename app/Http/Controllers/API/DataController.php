@@ -4,9 +4,11 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\DokumenKajianLingkungan;
+use App\Models\Galery;
 use App\Models\GeojsonCategory;
 use App\Models\IjinLingkungan;
 use App\Models\KawasanEkosistemEsensial;
+use App\Models\Option;
 use App\Models\Sppl;
 use Illuminate\Http\Request;
 
@@ -77,6 +79,24 @@ class DataController extends Controller
 
         $response['status'] = True;
         $response['data'] = Sppl::orderByDesc('created_at')->paginate(20);
+
+        return response()->json($response, 200);
+    }
+
+    public function galery()
+    {
+
+        $response['status'] = True;
+        $response['data'] = Galery::where('display','1')->orderByDesc('created_at')->get();
+
+        return response()->json($response, 200);
+    }
+    
+    public function option($title)
+    {
+
+        $response['status'] = True;
+        $response['data'] = Option::where(['display'=>'1','title'=>$title])->orderByDesc('created_at')->first();
 
         return response()->json($response, 200);
     }

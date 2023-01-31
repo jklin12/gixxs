@@ -52,6 +52,20 @@ return [
 					'route-name' => 'sppl.index'
 				],
 			]
-		]
+		],
+		[
+			'icon' => 'fa fa-image',
+			'title' => 'Galery ',
+			'url' => '/dashboard/galery',
+			'route-name' => 'galery.index'
+
+		], 
+		[
+			'icon' => 'fa fa-cog',
+			'title' => 'Option ',
+			'url' => '/dashboard/option',
+			'route-name' => 'option.index'
+
+		], 
 	]
 ];

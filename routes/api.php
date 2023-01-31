@@ -24,3 +24,5 @@ Route::get('ijin_lingkungan',[DataController::class,'ijinLingkungan']);
 Route::get('kes',[DataController::class,'kes']);
 Route::get('dkl',[DataController::class,'dkl']);
 Route::get('sppl',[DataController::class,'sppl']);
+Route::get('galery',[DataController::class,'galery']);
+Route::get('option/{title}',[DataController::class,'option']);

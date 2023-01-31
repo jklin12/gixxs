@@ -3,11 +3,13 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DklController;
+use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\Geojson2Controller;
 use App\Http\Controllers\GeojsonController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IjinLingkunganController;
 use App\Http\Controllers\KesController;
+use App\Http\Controllers\OptionController;
 use App\Http\Controllers\PetaController;
 use App\Http\Controllers\SpplController;
 use Illuminate\Support\Facades\Route;
@@ -54,4 +56,6 @@ Route::middleware(['auth', 'user-access:super-admin'])->group(function () {
     Route::resource('dashboard/geojson', Geojson2Controller::class);
     Route::resource('dashboard/dkl', DklController::class);
     Route::resource('dashboard/sppl', SpplController::class);
+    Route::resource('dashboard/galery', GaleryController::class);
+    Route::resource('dashboard/option', OptionController::class);
 });
