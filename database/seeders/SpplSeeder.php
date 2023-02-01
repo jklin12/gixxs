@@ -20,7 +20,7 @@ class SpplSeeder extends Seeder
 
         for ($i = 1; $i <= 10; $i++) {
             DB::table('sppls')->insert([
-                'sppl_name' => $faker->name(),
+                'sppl_name' => $faker->company(),
                 'sppl_file' => '',
                 'created_at' => $faker->date(),
             ]);

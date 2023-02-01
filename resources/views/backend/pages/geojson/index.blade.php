@@ -46,7 +46,7 @@
                     <ul>
                         
                         @foreach($vmenu['category_data'] as $kcat => $vcat)
-<li>
+			<li>
                             <a href="{{ route('geojson.show',$vcat['category_id']?? '0') }}">{{ $vcat['category_name']}}</a>
                         </li>
                         @endforeach
