@@ -160,7 +160,7 @@ class PetaController extends Controller
         $load['geojson'] = $susunDataBaru;
         $load['style'] = $styleData;
         $load['menu'] = $menuData;
-        return view('peta_mobile', $load);
+        return view('home.peta', $load);
     }
 
     public function ajax(Request $request)
