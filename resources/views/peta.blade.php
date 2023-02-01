@@ -85,7 +85,7 @@
                 </ul>
             </li>
 
-            @endforeachz
+            @endforeach
 
         </ul>
     </div>

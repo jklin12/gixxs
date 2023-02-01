@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div id="sidebar-layer" class="sidebar sidebar-lg sidebar-fixed sijingga-sidebar "  >
+    <div id="sidebar-layer" class="">
         <ul class="sidebar-nav">
             @foreach($menu as $kmenu => $vmenu)
             @foreach($vmenu['menu_data'] as $kcat => $vcat)
@@ -73,7 +73,7 @@
         </ul>
     </div>
 
-    <div class="sidebar sidebar-lg sidebar-end sidebar-fixed detail-sidebar "  style="top:0px">
+    <div class="sidebar sidebar-lg sidebar-end sidebar-fixed detail-sidebar " style="top:0px">
         <div class="sidebar-header d-flex justify-content-between detail-header">
             <h5 class="mb-0 text-start">Detail</h5>
             <button type="button" id="close-delete" class="btn-close text-white" aria-label="Close"></button>
@@ -90,7 +90,7 @@
                 $('.detail-sidebar').removeClass('detail-sidebar-show')
             })
             $(".sijingga-sidebar-menu").on('click', function() {
-                $('.sijingga-sidebar').css('top' , '0px')
+                $('.sijingga-sidebar').css('top', '0px')
                 var target = $(this).data('target');
 
                 if ($('#' + target).hasClass('sijingga-sidebar-show')) {
@@ -133,7 +133,7 @@
 
                 <?php foreach ($geojson as $key => $value) { ?>
                     map.on('click', 'layer_<?php echo $key ?>', (e) => {
-                        console.log(e.features[0].properties)
+
                         var tableDetail = '';
                         $.each(e.features[0].properties, function(key, val) {
                             tableDetail += '<li class="nav-item">';
@@ -141,7 +141,16 @@
                             tableDetail += '<dd>' + val + '</dd>';
                             tableDetail += '</li>';
                         });
-                        $('#detail-data').html(tableDetail)
+                        //$('#detail-data').html(tableDetail)
+                        const coordinates = e.features[0].geometry.coordinates.slice();
+                        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                        }
+
+                        new mapboxgl.Popup()
+                            .setLngLat(coordinates)
+                            .setHTML("description")
+                            .addTo(map);
 
                         map.flyTo({
                             center: [e.lngLat.lng, e.lngLat.lat],

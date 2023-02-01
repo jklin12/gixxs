@@ -37,7 +37,7 @@
 
             <div class="list-group list-group-flush">
                 @foreach($menu as $kmenu => $vmenu)
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#menu_{{$vmenu['menu_id']}}" role="button" aria-expanded="false" aria-controls="menu_{{$vmenu['menu_id']}}" style="font-size: 14px;">      {{$vmenu['menu_name']}}</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#menu_{{$vmenu['menu_id']}}" role="button" aria-expanded="false" aria-controls="menu_{{$vmenu['menu_id']}}" style="font-size: 14px;"> {{$vmenu['menu_name']}}</a>
                 <div class="collapse" id="menu_{{$vmenu['menu_id']}}">
                     <div class="card-body">
                         <div class="list-group list-group-flush">
@@ -54,6 +54,10 @@
 
 
             </div>
+        </div>
+        <div id="mySidenav" class="rightnav">
+            <a href="javascript:;" id="close-detail" class="btn btn-danger btn-icon btn-circle btn-sm mx-2 my-2"><i class="fa fa-times"></i></a>
+            <div id="detail-conatiner"></div>
         </div>
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
@@ -79,6 +83,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="assets/peta/js/scripts.js"></script>
         <script>
+            $('#close-detail').click(function() {
+                
+                $('#mySidenav').css('width', '0')
+            })
+
             mapboxgl.accessToken = 'pk.eyJ1IjoiZmFyaXNhaXp5IiwiYSI6ImNrd29tdWF3aDA0ZDAycXVzMWp0b2w4cWQifQ.tja8kdSB4_zpO5rOgGyYrQ';
             const map = new mapboxgl.Map({
                 container: 'map', // container ID
@@ -115,7 +124,9 @@
                             tableDetail += '<dd>' + val + '</dd>';
                             tableDetail += '</li>';
                         });
-                        $('#detail-data').html(tableDetail)
+                        $('#mySidenav #detail-conatiner').html(tableDetail)
+                        $('#mySidenav').css('width', '300px')
+
 
                         map.flyTo({
                             center: [e.lngLat.lng, e.lngLat.lat],
