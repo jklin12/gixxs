@@ -47,14 +47,8 @@
                         
                         @foreach($vmenu['category_data'] as $kcat => $vcat)
                        
-                        <li>{{ $vcat['category_name']}}
-                            <ul>
-                                @if(isset($vcat['geojson_data']))
-                                @foreach($vcat['geojson_data'] as $kgeo => $vgeo)
-                                <li><a href="{{ route('geojson.show',$vgeo['data_id']?? '0') }}">{{ $vgeo['geojson_name']}}</a></li>
-                                @endforeach
-                                @endif
-                            </ul>
+                        <li>
+                            <a href="{{ route('geojson.show',$vgeo['category_id']?? '0') }}">{{ $vcat['category_name']}}</a>
                         </li>
                         @endforeach
                     </ul>

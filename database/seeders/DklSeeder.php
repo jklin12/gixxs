@@ -19,7 +19,7 @@ class DklSeeder extends Seeder
 
         for ($i = 1; $i <= 10; $i++) {
             DB::table('dokumen_kajian_lingkungans')->insert([
-                'dkl_nama' => $faker->name(),
+                'dkl_nama' => $faker->company(),
                 'dkl_file' => '',
                 'created_at' => $faker->date(),
             ]);

@@ -19,7 +19,7 @@ class KesSeeder extends Seeder
 
         for ($i = 1; $i <= 10; $i++) {
             DB::table('kawasan_ekosistem_esensials')->insert([
-                'kes_nama' => $faker->name(),
+                'kes_nama' => $faker->company(),
                 'kes_file' => '',
                 'created_at' => $faker->date(),
             ]);
