@@ -21,7 +21,7 @@ class IjinSeeder extends Seeder
 
         for ($i = 1; $i <= 10; $i++) {
             DB::table('ijin_lingkungans')->insert([
-                'il_nama' => $faker->name(),
+                'il_nama' => $faker->company(),
                 'il_nib' => $faker->randomNumber(5,true),
                 'il_jenis_usaha' => $faker->jobTitle(),
                 'il_penanggung_jawab' => $faker->name(),

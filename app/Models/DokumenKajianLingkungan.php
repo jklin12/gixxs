@@ -15,5 +15,7 @@ class DokumenKajianLingkungan extends Model
     protected $fillable = [
         'dkl_nama',
         'dkl_file',
+        'dkl_exp_date',
+
     ];
 }

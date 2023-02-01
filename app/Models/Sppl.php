@@ -15,5 +15,6 @@ class Sppl extends Model
     protected $fillable = [
         'sppl_name',
         'sppl_file',
+        'sppl_exp_date',
     ];
 }

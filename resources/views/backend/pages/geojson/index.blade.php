@@ -3,6 +3,7 @@
 @section('title', 'Dashboard V1')
 
 @push('css')
+<link href="/assets/backend/plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" />
 @endpush
 
 @section('content')
@@ -36,38 +37,34 @@
     <!-- begin panel-body -->
     <div class="panel-body">
         <!-- begin table-responsive -->
-        <div class="table-responsive table-striped mb-2">
-            <table class="table m-b-0">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th class="text-center">Name</th> 
-                        <th class="text-center">Tampil</th> 
-                        <th class="text-center">Color</th>
-                        <th class="text-center">Opacity</th>
-                        <th colspan="3" class="text-center">Action</th>
+        <div id="jstree-default">
+            <ul>
+                @foreach($data as $kmenu => $vmenu)
+                @if($vmenu)
+                <li>
+                    {{ $vmenu['menu_name']}}
+                    <ul>
+                        
+                        @foreach($vmenu['category_data'] as $kcat => $vcat)
+                       
+                        <li>{{ $vcat['category_name']}}
+                            <ul>
+                                @if(isset($vcat['geojson_data']))
+                                @foreach($vcat['geojson_data'] as $kgeo => $vgeo)
+                                <li><a href="{{ route('geojson.show',$vgeo['data_id']?? '0') }}">{{ $vgeo['geojson_name']}}</a></li>
+                                @endforeach
+                                @endif
+                            </ul>
+                        </li>
+                        @endforeach
+                    </ul>
+                </li>
+                @endif
+                @endforeach
 
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($data as $key => $value)
-                    <tr>
-                        <td>{{ $loop->iteration + $data->firstItem() - 1 }}</td>
-                        <td>{{ $value->category_name}}</td> 
-                        <td>{{ $value->display == 1 ? 'Ya' :'Tidak'}}</td> 
-                        <td><button type="button" class="btn " style="background-color: {{ $value->fill_color}};color: #ffffff">{{ $value->fill_color}}</button></td> 
-                        <td>{{ $value->fill_opacity}}</td> 
-                        <td><a href="{{ route('geojson.show',$value->category_id) }}"  class="btn btn-primary btn-icon btn-circle btn-md"><i class="fa fa-search-plus "></i></a></td>
-                        <td><a href="{{ route('geojson.edit',$value->category_id) }}"  class="btn btn-warning btn-icon btn-circle btn-md"><i class="fa fa-edit "></i></a></td>
-                        <td><a href="javascript:;"   data-id="{{$value->category_id}}" data-name="{{ $value->category_name}}" class="btn btn-danger btn-icon btn-circle btn-md btnDelete"><i class="fa fa-trash "></i></a></td>
-
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            </ul>
         </div>
-        <!-- end table-responsive -->
-        {{ $data->links() }}
+
     </div>
     <!-- end panel-body -->
 
@@ -83,7 +80,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form  method="post" id="formDelete">
+                <form method="post" id="formDelete">
                     @csrf
                     @method('DELETE')
                     Apakah anda yakin menghapus <strong id="deleteName"></strong>
@@ -99,13 +96,14 @@
 @endsection
 
 @push('scripts')
-
+<script src="/assets/backend/plugins/jstree/dist/jstree.min.js"></script>
+<script src="/assets/backend/js/demo/ui-tree.demo.js"></script>
 <script>
-    $('.btnDelete').click(function(){
+    $('.btnDelete').click(function() {
         var id = $(this).data('id');
         var name = $(this).data('name');
 
-        $('#formDelete').attr('action','<?php echo route('geojson.destroy','') ?>/'+id)
+        $('#formDelete').attr('action', '<?php echo route('geojson.destroy', '') ?>/' + id)
         $('#deleteName').html(name);
         $('#deleteModal').modal('show')
     })

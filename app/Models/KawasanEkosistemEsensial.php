@@ -15,5 +15,6 @@ class KawasanEkosistemEsensial extends Model
     protected $fillable = [
         'kes_nama',
         'kes_file',
+        'kes_exp_date',
     ];
 }

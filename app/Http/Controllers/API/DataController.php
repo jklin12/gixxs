@@ -100,4 +100,12 @@ class DataController extends Controller
 
         return response()->json($response, 200);
     }
+    public function category($id)
+    {
+
+        $response['status'] = True;
+        $response['data'] = GeojsonCategory::where(['menu_id'=>$id])->get();
+
+        return response()->json($response, 200);
+    }
 }

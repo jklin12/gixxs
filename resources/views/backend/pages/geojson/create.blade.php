@@ -33,44 +33,35 @@
         <form action="{{ route('geojson.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group row m-b-15">
-                <label class="col-form-label col-md-3">Nama</label>
+                <label class="col-form-label col-md-3">Menu</label>
                 <div class="col-md-9">
-                    <input type="texxt" class="form-control m-b-5" placeholder="Masukan Nama" name="name" value="{{ old('category_name') }}">
+                    <select class="form-control" name="menu" id="select-menu">
+                        <option value=""></option>
+                        @foreach($menu as $key => $value)
+                        <option value="{{$value->menu_id}}">{{$value->menu_name}}</option>
+                        @endforeach
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-group row m-b-15">
+                <label class="col-form-label col-md-3">Category</label>
+                <div class="col-md-9">
+                    <select class="form-control" name="category" id="select-category">
+                        <option value=""></option>
+
+                    </select>
+
                 </div>
             </div>
 
             <div class="form-group row m-b-15">
-                <label class="col-form-label col-md-3">Tampil</label>
+                <label class="col-form-label col-md-3">Nama</label>
                 <div class="col-md-9">
-                    <select class="form-control" name="display">
-                        <option value="1" >Ya</option>
-                        <option value="0" >Tidak</option>
-                    </select>
+                    <input type="texxt" class="form-control m-b-5" placeholder="Masukan Nama" name="name" value="{{ old('Name') }}">
                 </div>
             </div>
-            <div class="form-group row m-b-15">
-                <label class="col-form-label col-md-3">Color</label>
-                <div class="col-md-9">
-                    <div class="input-group">
-                        <input class="form-control" name="fill_color" data-id="color-palette-1" value="{{ old('fill_color') }}"/>
-                        <div class="input-group-append">
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <div id="color-palette-1"></div>
-                                </li>
-                            </ul>
-                            <a href="#" class="btn btn-primary text-white" data-toggle="dropdown"><i class="fa fa-tint fa-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row m-b-15">
-                <label class="col-form-label col-md-3">Opacity</label>
-                <div class="col-md-9">
-                    <input type="texxt" class="form-control m-b-5" placeholder="" name="fill_opacity" value="{{ old('fill_opacity') }}">
-                </div>
-            </div>
-          
+
             <div class="form-group row m-b-15">
                 <label class="col-form-label col-md-3">File</label>
                 <div class="col-md-9">
@@ -94,6 +85,21 @@
         $('#color-palette-1').colorPalette().on('selectColor', function(e) {
             $('[data-id="color-palette-1"]').val(e.color);
         });
+
+        $('#select-menu').change(function() {
+            var selected = $(this).val();
+
+            $.get('/api/category/' + selected,
+                function(data) {
+                    var model = $('#select-category');
+                    model.empty();
+                    model.append("<option>Select a state</option>");
+                    $.each(data.data, function(index, element) {
+                        model.append("<option value='" + element.category_id + "'>" + element.category_name + "</option>");
+                    });
+                }
+            );
+        })
     });
 </script>
 

@@ -23,6 +23,7 @@ class IjinLingkungan extends Model
         'il_alamat_cabang',
         'il_lokasi',
         'il_file',
+        'il_exp_date',
         'il_file_small',
     ];
 }

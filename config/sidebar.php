@@ -27,7 +27,7 @@ return [
 
 		], [
 			'icon' => 'fa fa-file-alt',
-			'title' => 'Menu Level',
+			'title' => 'Perijinan',
 			'url' => 'javascript:;',
 			'caret' => true,
 			'sub_menu' => [

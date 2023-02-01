@@ -14,6 +14,7 @@ class GeojsonData extends Model
     protected $primaryKey = 'data_id';
 
     protected $fillable = [
+        'data_name',
         'data_properties',
         'data_type',
         'data_coordinates',

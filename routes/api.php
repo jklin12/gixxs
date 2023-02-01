@@ -26,3 +26,4 @@ Route::get('dkl',[DataController::class,'dkl']);
 Route::get('sppl',[DataController::class,'sppl']);
 Route::get('galery',[DataController::class,'galery']);
 Route::get('option/{title}',[DataController::class,'option']);
+Route::get('category/{id}',[DataController::class,'category']);

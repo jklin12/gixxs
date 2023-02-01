@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GeojsonCategory;
 use App\Models\GeojsonData;
 use App\Models\GeojsonProperties;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class Geojson2Controller extends Controller
@@ -19,12 +20,33 @@ class Geojson2Controller extends Controller
         $title = 'Data Geojson';
         $subtitle = '';
 
-        $data = $geojsonData = GeojsonCategory::orderByDesc('created_at')
-            ->paginate(10);
+        $data = GeojsonCategory::leftJoin('geojson_data', 'geojson_categories.category_id', '=', 'geojson_data.geojson_id')
+            ->leftJoin('menus', 'geojson_categories.menu_id', '=', 'menus.menu_id')
+            ->where('display', 1)
+            ->orderBy('category_id')
+            ->get();
+        //dd($data);
+
+        $susunData = [];
+        foreach ($data as $key => $value) {
+            if ($value->menu_id) {
+
+                $susunData[$value->menu_id]['menu_id'] = $value->menu_id;
+                $susunData[$value->menu_id]['menu_name'] = $value->menu_name;
+                $susunData[$value->menu_id]['category_data'][$value->category_id]['category_id'] = $value->category_id;
+                $susunData[$value->menu_id]['category_data'][$value->category_id]['category_name'] = $value->category_name;
+                if ($value->data_id) {
+                    $susunData[$value->menu_id]['category_data'][$value->category_id]['geojson_data'][$key]['data_id'] = $value->data_id;
+                    $susunData[$value->menu_id]['category_data'][$value->category_id]['geojson_data'][$key]['geojson_name'] = $value->geojson_name ?? $key;
+                }
+            }
+        }
+        //dd($susunData);
+
 
         $load['title'] = $title;
         $load['subtitle'] = $subtitle;
-        $load['data'] = $data;
+        $load['data'] = $susunData;
 
         return view('backend.pages.geojson.index', $load);
     }
@@ -43,6 +65,7 @@ class Geojson2Controller extends Controller
 
         $load['title'] = $title;
         $load['subtitle'] = $subtitle;
+        $load['menu'] = Menu::get();
 
         return view('backend.pages.geojson.create', $load);
     }
@@ -58,10 +81,9 @@ class Geojson2Controller extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'display' => ['required'],
+            'menu' => ['required'],
+            'category' => ['required'],
             'file' => ['required'],
-            'fill_color' => ['required', 'string', 'max:255'],
-            'fill_opacity' => 'required|regex:/^\d+(\.\d{1,2})?$/',
         ]);
 
         $files = [];
@@ -75,25 +97,20 @@ class Geojson2Controller extends Controller
         $geojson = json_decode(file_get_contents("uploads/geojson/" . $files['name']), true);
         //dd($geojson);
 
-        $categoryData['category_name'] = $request->name;
-        $categoryData['display'] = $request->display;
-        $categoryData['fill_color'] = $request->fill_color;
-        $categoryData['fill_opacity'] = $request->fill_opacity;
-
-        $category = GeojsonCategory::create($categoryData);
-        //dd($category->category_id);
         $propertiesData = [];
         $geojsonData = [];
         foreach ($geojson['features'] as $key => $value) {
             foreach ($value['properties'] as $propKey => $propVal) {
-                $propertiesData[$propKey]['geojson_id'] = $category->category_id;
+                $propertiesData[$propKey]['geojson_id'] = $request->category;
                 $propertiesData[$propKey]['table_key'] = $propKey;
             }
-            $geojsonData[$key]['geojson_id'] = $category->category_id;
+            $geojsonData[$key]['geojson_id'] = $request->category;
+            $geojsonData[$key]['geojson_name'] = $request->name;
             $geojsonData[$key]['data_properties'] = json_encode($value['properties']);
             $geojsonData[$key]['data_type'] = $value['geometry']['type'];
             $geojsonData[$key]['data_coordinates'] = json_encode($value['geometry']['coordinates']);
         }
+        //dd($geojsonData);
         GeojsonProperties::insert($propertiesData);
         GeojsonData::insert($geojsonData);
 
@@ -210,8 +227,8 @@ class Geojson2Controller extends Controller
     public function destroy($id)
     {
         $deleted = GeojsonCategory::where('category_id', $id)->delete();
-        GeojsonData::where('geojson_id',$id)->delete();
-        GeojsonProperties::where('geojson_id',$id)->delete();
+        GeojsonData::where('geojson_id', $id)->delete();
+        GeojsonProperties::where('geojson_id', $id)->delete();
 
         session()->flash('success', 'Hapus Data Suksess');
         return redirect()->route('geojson.index');
