@@ -66,4 +66,15 @@
 
 @push('scripts')
 <script src="/assets/backend/plugins/ckeditor/ckeditor.js"></script>
+<script>
+    var config = {
+        toolbar: [
+            ['Font', 'FontSize'],
+            ['Bold', 'Italic', 'Underline'],
+            ['TextColor', 'BGColor'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight']
+        ],
+    };
+    $('.ckeditor').ckeditor(config);
+</script>
 @endpush

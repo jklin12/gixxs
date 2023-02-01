@@ -48,11 +48,11 @@
                 <div class="col-md-9">
                     <select class="form-control" name="display" value="{{ old('display') }}">
                         <option value="1">Ya</option>
-                        <option value="0">Tidak</option> 
+                        <option value="0">Tidak</option>
                     </select>
                 </div>
             </div>
- 
+
 
             <button type="submit" class="btn btn-primary m-r-5 m-b-5">Simpan</button>
         </form>
@@ -65,5 +65,15 @@
 
 @push('scripts')
 <script src="/assets/backend/plugins/ckeditor/ckeditor.js"></script>
-
+<script>
+    var config = {
+        toolbar: [
+            ['Font', 'FontSize'],
+            ['Bold', 'Italic', 'Underline'],
+            ['TextColor', 'BGColor'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight']
+        ],
+    };
+    $('.ckeditor').ckeditor(config);
+</script>
 @endpush
