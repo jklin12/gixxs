@@ -7,7 +7,7 @@
 
 @section('content')
 
-<h1 class="page-header">{{ $title }}<small>{{ $subtitle }}</small></h1>
+<h1 class="page-header">{{ $title }}<small>{{ $subtitle }}</small>&nbsp;<a href="{{ route('geojson.edit',$geojsonData['category_id']) }}" class="btn btn-warning btn-icon btn-circle btn-md"><i class="fa fa-edit "></i></a></h1>
 
 @if ($message = Session::get('success'))
 
