@@ -37,21 +37,19 @@
 
             <div class="list-group list-group-flush">
                 @foreach($menu as $kmenu => $vmenu)
-                @foreach($vmenu['menu_data'] as $kcat => $vcat)
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#menu_{{$kcat}}" role="button" aria-expanded="false" aria-controls="menu_{{$kcat}}" style="font-size: 14px;"> {{$vcat['category_nama']}}</a>
-                <div class="collapse" id="menu_{{$kcat}}">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#menu_{{$vmenu['menu_id']}}" role="button" aria-expanded="false" aria-controls="menu_{{$vmenu['menu_id']}}" style="font-size: 14px;">      {{$vmenu['menu_name']}}</a>
+                <div class="collapse" id="menu_{{$vmenu['menu_id']}}">
                     <div class="card-body">
                         <div class="list-group list-group-flush">
-                            @foreach($vcat['data'] as $kdata => $vdata)
+                            @foreach($vmenu['menu_data'] as $kcat => $vcat)
                             <div class="form-check form-switch">
-                                <input class="form-check-input map-switcher"  type="checkbox" role="switch" id="flex_{{ $kdata }}" data-id="{{ $kdata }}">
-                                <label class="form-check-label" style="font-size: 12px;" for="flex_{{ $kdata }}">01-KONSERVASI DAERAH TANGKAPAN AIR DAN SUMBER SUMBER AIR</label>
+                                <input class="form-check-input map-switcher" type="checkbox" role="switch" id="flex_{{ $kcat }}" data-id="{{ $kcat }}">
+                                <label class="form-check-label" style="font-size: 12px;" for="flex_{{ $kcat }}">{{ $vcat }}</label>
                             </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
-                @endforeach
                 @endforeach
 
 

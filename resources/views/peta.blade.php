@@ -65,16 +65,16 @@
             </div>
         </div>
     </div>
+    
     <div id="sidebar-layer" class="sidebar sidebar-lg sidebar-fixed sijingga-sidebar ">
         <ul class="sidebar-nav">
-            @foreach($menu as $kmenu => $vmenu)
-            @foreach($vmenu['menu_data'] as $kcat => $vcat)
+        @foreach($menu as $kmenu => $vmenu)
             <li class="nav-group-layer">
-                <a class="nav-link nav-group-layer-toggle collapsed" data-coreui-toggle="collapse" data-coreui-target="#menu_{{$kcat}}" role="button" aria-expanded="false">
-                    {{$vcat['category_nama']}}
+                <a class="nav-link nav-group-layer-toggle collapsed" data-coreui-toggle="collapse" data-coreui-target="#menu_{{$vmenu['menu_id']}}" role="button" aria-expanded="false">
+                    {{$vmenu['menu_name']}}
                 </a>
-                <ul id="menu_{{$kcat}}" class="nav-group-layer-items collapse">
-                    @foreach($vcat['data'] as $kdata => $vdata)
+                <ul id="menu_{{$vmenu['menu_id']}}" class="nav-group-layer-items collapse">
+                    @foreach($vmenu['menu_data'] as $kdata => $vdata)
                     <li id="{{ $vdata }}" class="nav-link map-link-selector user-select-none" role="button" data-id="{{ $kdata }}" style="white-space: normal; word-wrap: break-word;">
                         <div class="form-check form-switch mb-0">
                             <input id="sekda_batas_administrasi_desa" class="form-check-input map-switcher" type="checkbox" role="switch" data-id="{{ $kdata }}" name="input_{{ $kdata }}">
@@ -85,8 +85,7 @@
                 </ul>
             </li>
 
-            @endforeach
-            @endforeach
+            @endforeachz
 
         </ul>
     </div>
