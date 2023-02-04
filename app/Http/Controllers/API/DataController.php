@@ -19,7 +19,7 @@ class DataController extends Controller
         $response['status'] = True;
 
         $geojsonData = GeojsonCategory::join('geojson_data', 'geojson_categories.category_id', '=', 'geojson_data.geojson_id')
-            //->join('menus', 'geojson_categories.menu_id', '=', 'menus.menu_id')
+            //->join('menus', 'geojson_categories.menu', '=', 'menus.menu_id')
             ->where('display', 1)
             ->orderBy('category_id')
             ->get();
@@ -104,7 +104,7 @@ class DataController extends Controller
     {
 
         $response['status'] = True;
-        $response['data'] = GeojsonCategory::where(['menu_id'=>$id])->get();
+        $response['data'] = GeojsonCategory::where(['menu'=>$id])->get();
 
         return response()->json($response, 200);
     }

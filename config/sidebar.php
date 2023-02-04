@@ -59,13 +59,26 @@ return [
 			'url' => '/dashboard/galery',
 			'route-name' => 'galery.index'
 
-		], 
+		],
 		[
 			'icon' => 'fa fa-cog',
 			'title' => 'Option ',
 			'url' => '/dashboard/option',
 			'route-name' => 'option.index'
 
-		], 
+		],
+		[
+			'icon' => 'fa fa-database',
+			'title' => 'Data Master',
+			'url' => 'javascript:;',
+			'caret' => true,
+			'sub_menu' => [
+				[
+					'url' => '/dashboard/menu',
+					'title' => 'Menu Geojson',
+					'route-name' => 'menu.index'
+				],
+			]
+		]
 	]
 ];

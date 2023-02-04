@@ -15,6 +15,7 @@
 </div>
 @if ($message = Session::get('success'))
 
+
 <div class="alert alert-green fade show m-b-10">
     <span class="close" data-dismiss="alert">×</span>
     <b>Success !</b> {{ $message }}
@@ -41,16 +42,28 @@
             <ul>
                 @foreach($data as $kmenu => $vmenu)
                 @if($vmenu)
-                <li>
+                <li data-jstree='{"opened":true}'>
                     {{ $vmenu['menu_name']}}
+                    @if(isset($vmenu['category_data']))
                     <ul>
-                        
+
                         @foreach($vmenu['category_data'] as $kcat => $vcat)
-			<li>
-                            <a href="{{ route('geojson.show',$vcat['category_id']?? '0') }}">{{ $vcat['category_name']}}</a>
+                        <li data-jstree='{"opened":true}'>
+                            {{ $vcat['category_name']}}
+                            @if(isset($vcat['geojson_data']))
+                            <ul>
+                                @foreach($vcat['geojson_data'] as $kjson => $vjson)
+
+                                <li data-jstree='{ "icon" : "fa fa-link fa-lg text-primary" }'><a href="{{route('geojson.show',$vjson['geojson_id']?? '0')}}">{{ $vjson['geojson_name']}}</a></li>
+
+                                @endforeach
+                            </ul>
+                            @endif
                         </li>
                         @endforeach
+
                     </ul>
+                    @endif
                 </li>
                 @endif
                 @endforeach
@@ -63,42 +76,13 @@
 
 </div>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Hapus Data</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" id="formDelete">
-                    @csrf
-                    @method('DELETE')
-                    Apakah anda yakin menghapus <strong id="deleteName"></strong>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="submit" form="formDelete" class="btn btn-danger">Hapus</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection
 
 @push('scripts')
 <script src="/assets/backend/plugins/jstree/dist/jstree.min.js"></script>
 <script src="/assets/backend/js/demo/ui-tree.demo.js"></script>
 <script>
-    $('.btnDelete').click(function() {
-        var id = $(this).data('id');
-        var name = $(this).data('name');
-
-        $('#formDelete').attr('action', '<?php echo route('geojson.destroy', '') ?>/' + id)
-        $('#deleteName').html(name);
-        $('#deleteModal').modal('show')
-    })
+   
 </script>
 @endpush

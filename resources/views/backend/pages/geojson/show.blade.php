@@ -7,7 +7,16 @@
 
 @section('content')
 
-<h1 class="page-header">{{ $title }}<small>{{ $subtitle }}</small>&nbsp;<a href="{{ route('geojson.edit',$geojsonData['category_id']) }}" class="btn btn-warning btn-icon btn-circle btn-md"><i class="fa fa-edit "></i></a></h1>
+<ol class="float-xl-right">
+    <a href="{{ route('geojson.edit',$geojsonData['category_id']) }}" class="btn btn-warning btn-icon btn-circle btn-md mr-2">
+        <i class="fa fa-edit "></i>
+    </a>
+    <a href="#" id="btnDelete" class="btn btn-danger btn-icon btn-circle btn-md">
+        <i class="fa fa-trash "></i>
+    </a>
+
+</ol>
+<h1 class="page-header">{{ $title }}<small>{{ $subtitle }}</small></h1>
 
 @if ($message = Session::get('success'))
 
@@ -42,21 +51,19 @@
                     <table class="table table-striped m-b-0 no-border">
                         <tbody>
                             <tr>
-                                <td><strong>Nama</strong></td>
-                                <td> {{ $geojsonData['category_name']}}</td>
+                                <td><strong>Geojson Name</strong></td>
+                                <td> {{ $geojsonData['geojson_name']}}</td>
                             </tr>
                             <tr>
-                                <td><strong>Tampil</strong></td>
-                                <td> {{ $geojsonData['display']?'Ya' : 'Tidak'}}</td>
+                                <td><strong>Geojson Color</strong></td>
+                                <td> <button type="button" class="btn " style="background-color: {{ $geojsonData['geojson_color']}};color: #ffffff">{{ $geojsonData['geojson_color']}}</button></td>
                             </tr>
                             <tr>
-                                <td><strong>Fill Color</strong></td>
-                                <td> <button type="button" class="btn " style="background-color: {{ $geojsonData['fill_color']}};color: #ffffff">{{ $geojsonData['fill_color']}}</button></td>
+                                <td><strong>Geojson Opacity</strong></td>
+                                <td> {{ $geojsonData['geojson_opacity']}}</td>
                             </tr>
-                            <tr>
-                                <td><strong>Opacity</strong></td>
-                                <td> {{ $geojsonData['fill_opacity']}}</td>
-                            </tr>
+
+
                         </tbody>
                     </table>
                 </div>
@@ -66,13 +73,32 @@
                     <table class="table table-striped m-b-0 no-border">
                         <tbody>
                             <tr>
-                                <td><strong>Created </strong></td>
-                                <td> {{ $geojsonData['created_at']}}</td>
+                                <td><strong>Menu </strong></td>
+                                <td> {{ $geojsonData['menu_name']}}</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Menu Tampil</strong></td>
+                                <td> {{ $geojsonData['menu_show']?'Ya' : 'Tidak'}}</td>
                             </tr>
                             <tr>
-                                <td><strong>Updated </strong></td>
-                                <td> {{ $geojsonData['updated_at']}}</td>
+                                <td><strong>Kategori </strong></td>
+                                <td> {{ $geojsonData['geojson_name']}}</td>
                             </tr>
+
+                            <tr>
+                                <td><strong>Kategori Tampil</strong></td>
+                                <td> {{ $geojsonData['display']?'Ya' : 'Tidak'}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kategori Color</strong></td>
+                                <td> <button type="button" class="btn " style="background-color: {{ $geojsonData['fill_color']}};color: #ffffff">{{ $geojsonData['fill_color']}}</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kategori Opacity</strong></td>
+                                <td> {{ $geojsonData['fill_opacity']}}</td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -96,7 +122,7 @@
     <!-- end panel-heading -->
     <!-- begin panel-body -->
     <div class="panel-body" style="">
-    <div class="table-responsive ">
+        <div class="table-responsive ">
             <table class="table table-striped m-b-0 no-border">
                 <thead>
                     <tr>
@@ -120,21 +146,39 @@
         </div>
     </div>
     <!-- end panel-body -->
-    
+
 </div>
 
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Hapus Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="formDelete" action="{{ route('geojson.destroy', $geojsonData['geojson_id'])}}">
+                    @csrf
+                    @method('DELETE')
+                    Apakah anda yakin menghapus <strong id="">{{ $geojsonData['geojson_name']}}</strong>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" form="formDelete" class="btn btn-danger">Hapus</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('scripts')
-
-<script>
-    $('.btnDelete').click(function() {
-        var id = $(this).data('id');
-        var name = $(this).data('name');
-
-        $('#formDelete').attr('action', '<?php echo route('geojson.destroy', '') ?>/' + id)
-        $('#deleteName').html(name);
+ <script>
+     $('#btnDelete').click(function() {
+        
         $('#deleteModal').modal('show')
     })
-</script>
+ </script>
 @endpush

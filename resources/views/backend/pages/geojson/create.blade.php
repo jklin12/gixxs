@@ -63,6 +63,30 @@
             </div>
 
             <div class="form-group row m-b-15">
+                <label for="recipient-name" class="col-form-label col-md-3">Color :</label>
+                <div class="col-md-9">
+                    <div class="input-group">
+                        <input class="form-control" name="geojson_color" id="add-category-color" data-id="color-palette-1" />
+                        <div class="input-group-append">
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <div id="color-palette-1"></div>
+                                </li>
+                            </ul>
+                            <a href="#" class="btn btn-grey text-black-lighter" data-toggle="dropdown"><i class="fa fa-tint fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row m-b-15">
+                <label for="recipient-name" class="col-form-label col-md-3">Opacity :</label>
+                <div class="col-md-9">
+                    <input type="number" step="any" class="form-control" id="add-opacity" name="geojson_opacity">
+                </div>
+
+            </div>
+
+            <div class="form-group row m-b-15">
                 <label class="col-form-label col-md-3">File</label>
                 <div class="col-md-9">
                     <input type="file" class="form-control m-b-5" name="file">

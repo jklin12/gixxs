@@ -65,23 +65,36 @@
             </div>
         </div>
     </div>
-    
+
     <div id="sidebar-layer" class="sidebar sidebar-lg sidebar-fixed sijingga-sidebar ">
         <ul class="sidebar-nav">
-        @foreach($menu as $kmenu => $vmenu)
+            @foreach($menu as $kmenu => $vmenu)
             <li class="nav-group-layer">
                 <a class="nav-link nav-group-layer-toggle collapsed" data-coreui-toggle="collapse" data-coreui-target="#menu_{{$vmenu['menu_id']}}" role="button" aria-expanded="false">
                     {{$vmenu['menu_name']}}
                 </a>
                 <ul id="menu_{{$vmenu['menu_id']}}" class="nav-group-layer-items collapse">
-                    @foreach($vmenu['menu_data'] as $kdata => $vdata)
-                    <li id="{{ $vdata }}" class="nav-link map-link-selector user-select-none" role="button" data-id="{{ $kdata }}" style="white-space: normal; word-wrap: break-word;">
-                        <div class="form-check form-switch mb-0">
-                            <input id="sekda_batas_administrasi_desa" class="form-check-input map-switcher" type="checkbox" role="switch" data-id="{{ $kdata }}" name="input_{{ $kdata }}">
-                        </div>
-                        {{ $vdata }}
+                    @if(isset($vmenu['menu_data']))
+                    @foreach($vmenu['menu_data'] as $kcat => $vcat)
+                    <li class="nav-group-layer">
+                        <a class="nav-link nav-group-layer-toggle collapsed" data-coreui-toggle="collapse" data-coreui-target="#category_{{$kcat}}" role="button" aria-expanded="false">
+                            &nbsp;&nbsp; {{$vcat['category_name']}}
+                        </a>
+                        <ul id="category_{{$kcat}}" class="nav-group-layer-items collapse">
+                            @if(isset($vcat['category_data']))
+                            @foreach($vcat['category_data'] as $kdata => $vdata)
+                            <li id="data_{{ $kdata }}" class="nav-link map-link-selector user-select-none" role="button" data-id="{{ $kdata }}" style="white-space: normal; word-wrap: break-word;">
+                                <div class="form-check form-switch mb-0">
+                                    <input id="sekda_batas_administrasi_desa" class="form-check-input map-switcher" type="checkbox" role="switch" data-id="{{ $kdata }}" name="input_{{ $kdata }}">
+                                </div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ $vdata }}
+                            </li>
+                            @endforeach
+                            @endif
+                        </ul>
                     </li>
                     @endforeach
+                    @endif
                 </ul>
             </li>
 
@@ -181,9 +194,9 @@
             map.on('idle', () => {
                 $(".map-switcher").each(function() {
                     var id = $(this).data('id');
-                    //alert(id)
+                    
                     if (this.checked) {
-                        map.setLayoutProperty('layer_' + id, 'visibility', 'visible');
+                       map.setLayoutProperty('layer_' + id, 'visibility', 'visible');
                     } else {
                         map.setLayoutProperty('layer_' + id, 'visibility', 'none');
                     }

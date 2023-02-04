@@ -27,6 +27,16 @@
             height: inherit;
             width: 100%;
         }
+
+        .menu-title .accicon {
+            float: right;
+            font-size: 15px;
+            width: 1.2em;
+        }
+
+        .menu-title:not(.collapsed) .rotate-icon {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 
@@ -34,26 +44,40 @@
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
         <div class=" bg-white" id="sidebar-wrapper">
-
             <div class="list-group list-group-flush">
                 @foreach($menu as $kmenu => $vmenu)
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#menu_{{$vmenu['menu_id']}}" role="button" aria-expanded="false" aria-controls="menu_{{$vmenu['menu_id']}}" style="font-size: 14px;"> {{$vmenu['menu_name']}}</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3 collapsed menu-title" data-bs-toggle="collapse" href="#menu_{{$vmenu['menu_id']}}" role="button" aria-expanded="false" aria-controls="menu_{{$vmenu['menu_id']}}" style="font-size: 14px;"> {{$vmenu['menu_name']}} <span class="accicon"><i class="fas fa-angle-down rotate-icon"></i></span></a>
+
+
                 <div class="collapse" id="menu_{{$vmenu['menu_id']}}">
-                    <div class="card-body">
-                        <div class="list-group list-group-flush">
-                            @foreach($vmenu['menu_data'] as $kcat => $vcat)
-                            <div class="form-check form-switch">
-                                <input class="form-check-input map-switcher" type="checkbox" role="switch" id="flex_{{ $kcat }}" data-id="{{ $kcat }}">
-                                <label class="form-check-label" style="font-size: 12px;" for="flex_{{ $kcat }}">{{ $vcat }}</label>
+                    @if(isset($vmenu['menu_data']))
+
+                    <div class="list-group list-group-flush mx-2">
+                        @foreach($vmenu['menu_data'] as $kcat => $vcat)
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3 menu-title collapsed" data-bs-toggle="collapse" href="#category_{{$kcat}}" role="button" aria-expanded="false" aria-controls="category_{{$kcat}}" style="font-size: 14px;">{{$vcat['category_name']}}  <span class="accicon"><i class="fas fa-angle-down rotate-icon"></i></span></a>
+                        @if($vcat['category_data'])
+                        <div class="collapse" id="category_{{$kcat}}">
+                            <div class="card-body ms-4">
+                                @foreach($vcat['category_data'] as $kdata=>$vdata)
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input map-switcher" type="checkbox" role="switch" id="flex_{{ $kdata }}" data-id="{{ $kdata }}">
+                                    <label class="form-check-label" style="font-size: 12px;" for="flex_{{ $kdata }}">{{ $vdata }}</label>
+                                </div>
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
+                        @endif
+                        @endforeach
+
                     </div>
+                    @endif
                 </div>
                 @endforeach
 
 
             </div>
+
+
         </div>
         <div id="mySidenav" class="rightnav">
             <a href="javascript:;" id="close-detail" class="btn btn-danger btn-icon btn-circle btn-sm mx-2 my-2"><i class="fa fa-times"></i></a>
@@ -84,7 +108,7 @@
         <script src="assets/peta/js/scripts.js"></script>
         <script>
             $('#close-detail').click(function() {
-                
+
                 $('#mySidenav').css('width', '0')
             })
 
