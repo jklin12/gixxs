@@ -83,7 +83,7 @@
                             </tr>
                             <tr>
                                 <td><strong>Kategori </strong></td>
-                                <td> {{ $geojsonData['geojson_name']}}</td>
+                                <td> {{ $geojsonData['category_name']}}</td>
                             </tr>
 
                             <tr>

@@ -144,12 +144,12 @@ class Geojson2Controller extends Controller
 
         $data = Geojson::join('geojson_categories', 'geojson.category', '=', 'geojson_categories.category_id')
             ->join('menus', 'geojson_categories.menu', '=', 'menus.menu_id')
-            ->join('geojson_data', 'geojson.geojson_id', '=', 'geojson_data.geojson_id')
+            ->leftJoin('geojson_data', 'geojson.geojson_id', '=', 'geojson_data.geojson_id')
             //->join('geojson_properties', 'geojson_data.geojson_id', '=', 'geojson_properties.geojson_id')
             //->where('category_id', 9)
             ->where(DB::raw('geojson.geojson_id'), $id)
             ->get();
-        
+	//dd($data->toArray());        
 
 
         $geojsonData = [];
@@ -179,7 +179,7 @@ class Geojson2Controller extends Controller
 
         $propKey = GeojsonProperties::where('geojson_id', $geojson_id)->get();
 
-
+	//dd($geojsonData);
 
         $load['title'] = $title;
         $load['subtitle'] = $subtitle;

@@ -21,7 +21,7 @@ class PetaController extends Controller
             ->orderBy('menu_order')
             ->where(['menu_show' => 1])
             ->get();
-
+	//dd($geojsonData);
 
         $susunData = [];
         $menuData = [];

@@ -55,7 +55,7 @@
                     <div class="list-group list-group-flush mx-2">
                         @foreach($vmenu['menu_data'] as $kcat => $vcat)
                         <a class="list-group-item list-group-item-action list-group-item-light p-3 menu-title collapsed" data-bs-toggle="collapse" href="#category_{{$kcat}}" role="button" aria-expanded="false" aria-controls="category_{{$kcat}}" style="font-size: 14px;">{{$vcat['category_name']}}  <span class="accicon"><i class="fas fa-angle-down rotate-icon"></i></span></a>
-                        @if($vcat['category_data'])
+                        @if(isset($vcat['category_data']))
                         <div class="collapse" id="category_{{$kcat}}">
                             <div class="card-body ms-4">
                                 @foreach($vcat['category_data'] as $kdata=>$vdata)
