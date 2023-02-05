@@ -13,15 +13,15 @@ class PetaController extends Controller
 {
     public function index()
     {
-        $geojsonData = Menu::leftJoin('geojson_categories', 'menus.menu_id', '=', 'geojson_categories.menu')
-            ->leftJoin('geojson', function ($join) {
-                $join->on('geojson_categories.category_id', '=', 'geojson.category')->where(['display' => 1]);
-            })
+        $geojsonData = Menu::leftJoin('geojson_categories', function ($join) {
+            $join->on('menus.menu_id', '=', 'geojson_categories.menu')->where(['display' => 1]);
+        })
+            ->leftJoin('geojson', 'geojson_categories.category_id', '=', 'geojson.category')
             ->leftJoin('geojson_data', 'geojson.geojson_id', '=', 'geojson_data.geojson_id')
             ->orderBy('menu_order')
             ->where(['menu_show' => 1])
             ->get();
-	//dd($geojsonData);
+        //dd($geojsonData);
 
         $susunData = [];
         $menuData = [];

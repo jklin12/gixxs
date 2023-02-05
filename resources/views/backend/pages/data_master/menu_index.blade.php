@@ -106,7 +106,7 @@
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{ $vcat['category_name']}}</td>
-                                            <td>{{ $vcat['display']}}</td>
+                                            <td>{{ $vcat['display'] ? 'Ya' : 'Tidak'}}</td>
                                             <td><span class="badge badge-primary" style="background-color: {{ $vcat['fill_color']}};">{{ $vcat['fill_color']}}</span></td>
                                             <td>{{ $vcat['fill_opacity']}}</td>
 

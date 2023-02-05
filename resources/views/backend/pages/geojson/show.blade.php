@@ -8,7 +8,7 @@
 @section('content')
 
 <ol class="float-xl-right">
-    <a href="{{ route('geojson.edit',$geojsonData['category_id']) }}" class="btn btn-warning btn-icon btn-circle btn-md mr-2">
+    <a href="{{ route('geojson.edit',$geojsonData['geojson_id']) }}" class="btn btn-warning btn-icon btn-circle btn-md mr-2">
         <i class="fa fa-edit "></i>
     </a>
     <a href="#" id="btnDelete" class="btn btn-danger btn-icon btn-circle btn-md">

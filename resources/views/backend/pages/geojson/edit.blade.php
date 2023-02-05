@@ -30,30 +30,46 @@
         <p class="alert alert-danger">{{ $err }}</p>
         @endforeach
         @endif
-        <form action="{{ route('geojson.update',$data->category_id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('geojson.update',$data->geojson_id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="form-group row m-b-15">
+                <label class="col-form-label col-md-3">Menu</label>
+                <div class="col-md-9">
+                    <select class="form-control" name="menu" id="select-menu">
+                        <option value=""></option>
+                        @foreach($menu as $key => $value)
+                        <option value="{{$value->menu_id}}">{{$value->menu_name}}</option>
+                        @endforeach
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-group row m-b-15">
+                <label class="col-form-label col-md-3">Category</label>
+                <div class="col-md-9">
+                    <select class="form-control" name="category" id="select-category">
+                        <option value=""></option>
+                        @foreach($category as $key => $value)
+                        <option value="{{$value->category_id}}">{{$value->category_name}}</option>
+                        @endforeach
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-group row m-b-15">
                 <label class="col-form-label col-md-3">Nama</label>
                 <div class="col-md-9">
-                    <input type="texxt" class="form-control m-b-5" placeholder="Masukan Nama" name="name" value="{{ $data->category_name }}">
+                    <input type="texxt" class="form-control m-b-5" placeholder="Masukan Nama" name="name" value="{{ $data->geojson_name }}">
                 </div>
             </div>
 
-            <div class="form-group row m-b-15">
-                <label class="col-form-label col-md-3">Tampil</label>
-                <div class="col-md-9">
-                    <select class="form-control" name="display">
-                        <option value="1" {{ $data->display ? 'selected': ''}}>Ya</option>
-                        <option value="0" {{ !$data->display ? 'selected': ''}}>Tidak</option>
-                    </select>
-                </div>
-            </div>
+         
             <div class="form-group row m-b-15">
                 <label class="col-form-label col-md-3">Color</label>
                 <div class="col-md-9">
                     <div class="input-group">
-                        <input class="form-control" name="fill_color" data-id="color-palette-1" value="{{ $data->fill_color }}"/>
+                        <input class="form-control" name="fill_color" data-id="color-palette-1" value="{{ $data->geojson_color }}"/>
                         <div class="input-group-append">
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
@@ -68,7 +84,7 @@
             <div class="form-group row m-b-15">
                 <label class="col-form-label col-md-3">Opacity</label>
                 <div class="col-md-9">
-                    <input type="texxt" class="form-control m-b-5" placeholder="" name="fill_opacity" value="{{ $data->fill_opacity }}">
+                    <input type="texxt" class="form-control m-b-5" placeholder="" name="fill_opacity" value="{{ $data->geojson_opacity }}">
                 </div>
             </div>
 
@@ -90,6 +106,23 @@
         $('#color-palette-1').colorPalette().on('selectColor', function(e) {
             $('[data-id="color-palette-1"]').val(e.color);
         });
+
+        $('#select-menu').val(<?php echo $data->menu_id?>).change();
+        $('#select-category').val(<?php echo $data->category_id?>).change();
+        $('#select-menu').change(function() {
+            var selected = $(this).val();
+
+            $.get('/api/category/' + selected,
+                function(data) {
+                    var model = $('#select-category');
+                    model.empty();
+                    model.append("<option>Select a state</option>");
+                    $.each(data.data, function(index, element) {
+                        model.append("<option value='" + element.category_id + "'>" + element.category_name + "</option>");
+                    });
+                }
+            );
+        })
     });
 </script>
 
