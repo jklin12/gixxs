@@ -24,7 +24,9 @@ class Geojson2Controller extends Controller
 
         $data = Menu::leftJoin('geojson_categories', 'menus.menu_id', '=', 'geojson_categories.menu')
             ->leftJoin('geojson', 'geojson_categories.category_id', '=', 'geojson.category')
-            ->orderBy('menu_order')
+            ->orderBy('menu_name')
+	    ->orderBy('category_name')
+            ->orderBy('geojson_name')
             ->get();
         //print_r($data->toArray());die;
         //dd($data);
