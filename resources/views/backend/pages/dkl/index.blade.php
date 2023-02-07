@@ -42,6 +42,7 @@
                     <tr>
                         <th>#</th>
                         <th class="text-center">Nama</th>
+                        <th class="text-center">Tanggal Expired</th>
                         <th class="text-center">File</th>
                         <th colspan="2" class="text-center">Action</th>
 
@@ -52,6 +53,7 @@
                     <tr>
                         <td>{{ $loop->iteration + $data->firstItem() - 1 }}</td>
                         <td>{{ $value->dkl_nama}}</td> 
+                        <td>{{ $value->dkl_exp_date }}</td> 
                         <td><a href="/storage/{{ $value->dkl_file}}" target="_blank" class="btn btn-primary btn-icon btn-circle btn-md"><i class="fa fa-cloud-download-alt "></i></a></td>
                         <td><a href="{{ route('dkl.edit',$value->dkl_id) }}"  class="btn btn-warning btn-icon btn-circle btn-md"><i class="fa fa-edit "></i></a></td>
                         <td><a href="javascript:;"   data-id="{{$value->dkl_id}}" data-name="{{ $value->dkl_nama}}" class="btn btn-danger btn-icon btn-circle btn-md btnDelete"><i class="fa fa-trash "></i></a></td>

@@ -14,6 +14,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\PetaController;
 use App\Http\Controllers\SpplController;
+use App\Http\Controllers\UsersControlerr;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,4 +63,5 @@ Route::middleware(['auth', 'user-access:super-admin'])->group(function () {
     Route::resource('dashboard/option', OptionController::class);
     Route::resource('dashboard/menu', MenuController::class);
     Route::resource('dashboard/category', CategoryController::class);
+    Route::resource('dashboard/users', UsersControlerr::class);
 });

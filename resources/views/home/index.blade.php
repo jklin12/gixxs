@@ -4,8 +4,7 @@
 <div class="w-screen overflow-x-hidden">
     <header class="h-screen">
         <div class="h-full relative">
-            <video width="100%" height="100%" autoplay muted loop class="object-cover absolute right-0 bottom-0 min-w-full min-h-full" poster="assets/img/tembakau.jpg">
-                <source src="assets/vid/jalan.mp4" type="video/mp4">
+            <video width="100%" height="100%" autoplay muted loop class="object-cover absolute right-0 bottom-0 min-w-full min-h-full" poster="assets/img/home-bg.jpeg">
             </video>
 
             <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -29,37 +28,33 @@
             <div class="bg-gray-900 bg-opacity-75 p-8" id="highlight-carousel">
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
-
+                        @foreach($galery as $kg => $vg)
                         <li class="glide__slide">
                             <a href="" class="hover:text-primary block text-gray-200" data-aos="none" data-aos-offset="100">
                                 <article class="grid gap-4 lg:grid-cols-5 lg:gap-8">
                                     <div class=" lg:col-span-2 aspect-w-16 aspect-h-9 max-w-full ">
-                                        <img src="/assets/img/tembakau.jpg" class="w-full max-w-full object-cover">
+                                        <img src="{{ $vg->file }}" class="w-full max-w-full object-cover">
                                     </div>
                                     <span class="lg:col-span-3">
                                         <div class="flex mb-4 items-center space-x-4">
                                             <div class="flex space-x-4">
                                                 <time class="text-gray-200 text-xs" datetime="">
-                                                    <i class="fas fa-calendar-alt text-primary"></i> &nbsp;{{ date('Y-m-d')}}
-                                                </time>
-                                                <span class="text-gray-200 text-xs">
-                                                    <i class="fas fa-user text-primary"></i> &nbsp;Article 1
-                                                </span>
+                                                    <i class="fas fa-calendar-alt text-primary"></i> &nbsp;{{ $vg->created_at}}
+                                                </time> 
                                             </div>
                                         </div>
                                         <h2 class=" text-lg font-bold mb-4 leading-relaxed ">
-                                            Lorem ipsum dolor sit amet
+                                            {{ $vg->title }}
                                         </h2>
                                         <p style="color: white;">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            {{ $vg->body }}
                                         </p>
                                     </span>
 
                                 </article>
                             </a>
                         </li>
-
-
+                        @endforeach
                     </ul>
                 </div>
 
@@ -123,13 +118,13 @@
             <h3 class="text-center font-semibold mb-2">Dokumen Kawasan Lingkungan</h3>
             <h4 class="text-center text-gray-700 text-sm">Dokumen Kawasan Lingkungan Kabupaten Kutai Timur</h4>
         </a>
-       
+
         <a href="{{ route('sppl') }}" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
             <img src="assets/img/undraw_water.png" class="mb-4 object-contain h-28">
             <h3 class="text-center font-semibold mb-2">SPPL</h3>
             <h4 class="text-center text-gray-700 text-sm">SPPL</h4>
         </a>
-       
+
     </section>
 
     <section class="pt-20 pb-20 container" id="satu-peta">
@@ -142,8 +137,7 @@
     </section>
 
 
-   
+
 
 </div>
 @endsection
-

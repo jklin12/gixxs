@@ -55,12 +55,14 @@ class DklController extends Controller
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
             'file' => 'required|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'exp_date' => ['required', 'date'], 
         ]);
 
         $filePath = $request->file('file')->store('/files/dkl', 'public');
 
         $postVal['dkl_nama'] = $request->nama; 
         $postVal['dkl_file'] = $filePath; 
+        $postVal['dkl_exp_date'] = $request->exp_date; 
 
         $insert =  DokumenKajianLingkungan::create($postVal);
 
@@ -111,9 +113,11 @@ class DklController extends Controller
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
             'file' => 'mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'exp_date' => ['required', 'date'], 
         ]);
 
         $postVal['dkl_nama'] = $request->nama;
+        $postVal['dkl_exp_date'] = $request->exp_date;
      
 
         DokumenKajianLingkungan::where('dkl_id', $id)->update($postVal);

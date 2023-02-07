@@ -55,13 +55,20 @@
 
                     <div class="list-group list-group-flush mx-2">
                         @foreach($vmenu['menu_data'] as $kcat => $vcat)
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3 menu-title collapsed" data-bs-toggle="collapse" href="#category_{{$kcat}}" role="button" aria-expanded="false" aria-controls="category_{{$kcat}}" style="font-size: 14px;">{{$vcat['category_name']}} <span class="accicon"><i class="fas fa-angle-down rotate-icon"></i></span></a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3 menu-title collapsed" data-bs-toggle="collapse" href="#category_{{$kcat}}" role="button" aria-expanded="false" aria-controls="category_{{$kcat}}" style="font-size: 14px;">
+                            {{$vcat['category_name']}}
+                            <span class="accicon"><i class="fas fa-angle-down rotate-icon"></i></span>
+                        </a>
                         @if(isset($vcat['category_data']))
                         <div class="collapse" id="category_{{$kcat}}">
                             <div class="card-body ms-4">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input cat-switcher" type="checkbox" role="switch" id="flex_cat_{{ $kcat }}" data-id="{{ $kcat }}">
+                                    <label class="form-check-label" style="font-size: 12px;" for="flex_cat_{{ $kcat }}">Tampil Semua</label>
+                                </div>
                                 @foreach($vcat['category_data'] as $kdata=>$vdata)
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input map-switcher" type="checkbox" role="switch" id="flex_{{ $kdata }}" data-id="{{ $kdata }}">
+                                    <input class="form-check-input map-switcher flex_cat_{{ $kcat }}" type="checkbox" role="switch" id="flex_{{ $kdata }}" data-id="{{ $kdata }}">
                                     <label class="form-check-label" style="font-size: 12px;" for="flex_{{ $kdata }}">{{ str_replace('_',' ',$vdata) }}</label>
                                 </div>
                                 @endforeach
@@ -120,7 +127,7 @@
                 // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
                 style: 'mapbox://styles/mapbox/streets-v12',
                 center: [116.75033, 0.44727], // starting position
-                zoom: 11 // starting zoom
+                zoom: 8 // starting zoom
             });
 
             map.on('load', () => {
@@ -186,6 +193,12 @@
                 })
             })
             map.addControl(new mapboxgl.NavigationControl());
+
+            $('.cat-switcher').change(function() {
+                var id = $(this).data('id');
+                
+                $('.flex_cat_'+id).trigger('click');
+            })
         </script>
 
 </body>

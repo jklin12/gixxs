@@ -38,7 +38,17 @@
                     <input type="texxt" class="form-control m-b-5" placeholder="Masukan Nama" name="nama" value="{{ $data->sppl_name }}">
                 </div>
             </div>
-         
+            <div class="form-group row m-b-15">
+                <label class="col-form-label col-md-3">Tanggal Expired</label>
+                <div class="col-md-9">
+                    <div class="input-group date" id="datetimepicker1" >
+                        <input type="text" class="form-control" name="exp_date" />
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="form-group row m-b-15">
                 <label class="col-form-label col-md-3">File</label>
                 <div class="col-md-9">
@@ -56,5 +66,9 @@
 @endsection
 
 @push('scripts')
-
+<script>
+    $('#datetimepicker1').datetimepicker({
+        format: 'Y-MM-DD'
+    });
+</script>
 @endpush

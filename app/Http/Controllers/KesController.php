@@ -55,12 +55,14 @@ class KesController extends Controller
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
             'file' => 'required|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'exp_date' => ['required', 'date'], 
         ]);
 
         $filePath = $request->file('file')->store('/files/kes', 'public');
 
         $postVal['kes_nama'] = $request->nama; 
         $postVal['kes_file'] = $filePath; 
+        $postVal['kes_exp_date'] = $request->exp_date; 
 
         $insert =  KawasanEkosistemEsensial::create($postVal);
 
@@ -111,9 +113,11 @@ class KesController extends Controller
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
             'file' => 'mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'exp_date' => ['required', 'date'], 
         ]);
 
         $postVal['kes_nama'] = $request->nama;
+        $postVal['kes_exp_date'] = $request->exp_date;
      
 
         KawasanEkosistemEsensial::where('kes_id', $id)->update($postVal);

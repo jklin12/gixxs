@@ -55,11 +55,13 @@ class SpplController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'file' => 'required|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'exp_date' => ['required', 'date'], 
         ]);
 
         $filePath = $request->file('file')->store('/files/sppl', 'public');
 
         $postVal['sppl_name'] = $request->name;
+        $postVal['sppl_exp_date'] = $request->exp_date;
         $postVal['sppl_file'] = $filePath;
 
         Sppl::create($postVal);
@@ -111,11 +113,11 @@ class SpplController extends Controller
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
             'file' => 'mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'exp_date' => ['required', 'date'], 
         ]);
 
         $postVal['sppl_name'] = $request->nama;
-
-
+        $postVal['sppl_exp_date'] = $request->exp_date;
 
         Sppl::where('sppl_id', $id)->update($postVal);
 

@@ -19,7 +19,7 @@
 <body>
     <div class="wrapper d-flex flex-column vh-100 bg-light">
         <header class="header">
-            <a class="header-brand ms-3 fw-semibold d-none d-md-block" href="#">
+            <a class="header-brand ms-3 fw-semibold d-none d-md-block" href="{{route('home')}}">
                 {{ config('site.site_name');  }}
             </a>
             <a class="header-brand ms-3 fw-semibold d-block d-md-none" href="#">
@@ -82,12 +82,16 @@
                         </a>
                         <ul id="category_{{$kcat}}" class="nav-group-layer-items collapse">
                             @if(isset($vcat['category_data']))
+                            <li id="data_cat_{{ $kcat }}" class="nav-link map-link-selector user-select-none" role="button" data-id="{{ $kcat }}" style="white-space: normal; word-wrap: break-word;">
+                                <div class="form-check form-switch mb-0">
+                                    <input id="cat_{{$kcat}}" class="form-check-input cat-switcher" type="checkbox" role="switch" data-id="{{ $kcat }}" name="input_{{ $kcat }}">
+                                </div>Tampil Semua
+                            </li>
                             @foreach($vcat['category_data'] as $kdata => $vdata)
                             <li id="data_{{ $kdata }}" class="nav-link map-link-selector user-select-none" role="button" data-id="{{ $kdata }}" style="white-space: normal; word-wrap: break-word;">
                                 <div class="form-check form-switch mb-0">
-                                    <input id="sekda_batas_administrasi_desa" class="form-check-input map-switcher" type="checkbox" role="switch" data-id="{{ $kdata }}" name="input_{{ $kdata }}">
-                                </div>
-                                &nbsp;&nbsp;&nbsp;&nbsp;{{ $vdata }}
+                                    <input id="geo_{{$kdata}}" class="form-check-input map-switcher flex_cat_{{ $kcat}}" type="checkbox" role="switch" data-id="{{ $kdata }}" name="input_{{ $kdata }}">
+                                </div> {{ str_replace('_',' ',$vdata) }}
                             </li>
                             @endforeach
                             @endif
@@ -139,7 +143,7 @@
                 // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
                 style: 'mapbox://styles/mapbox/streets-v12',
                 center: [116.75033, 0.44727], // starting position
-                zoom: 11 // starting zoom
+                zoom: 8 // starting zoom
             });
 
             map.on('load', () => {
@@ -194,9 +198,9 @@
             map.on('idle', () => {
                 $(".map-switcher").each(function() {
                     var id = $(this).data('id');
-                    
+
                     if (this.checked) {
-                       map.setLayoutProperty('layer_' + id, 'visibility', 'visible');
+                        map.setLayoutProperty('layer_' + id, 'visibility', 'visible');
                     } else {
                         map.setLayoutProperty('layer_' + id, 'visibility', 'none');
                     }
@@ -204,6 +208,12 @@
             })
             map.addControl(new mapboxgl.NavigationControl());
         })
+
+        $('.cat-switcher').change(function() {
+                var id = $(this).data('id');
+                
+                $('.flex_cat_'+id).trigger('click');
+            })
     </script>
 </body>
 

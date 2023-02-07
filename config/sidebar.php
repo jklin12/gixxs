@@ -78,6 +78,11 @@ return [
 					'title' => 'Menu Geojson',
 					'route-name' => 'menu.index'
 				],
+				[
+					'url' => '/dashboard/users',
+					'title' => 'Users',
+					'route-name' => 'menu.users'
+				],
 			]
 		]
 	]

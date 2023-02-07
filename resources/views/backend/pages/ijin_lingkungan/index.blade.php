@@ -50,6 +50,7 @@
                         <th class="text-center">Alamat Perwakilan</th>
                         <th class="text-center">Alamat Cabang</th>
                         <th class="text-center">Lokasi Ijin</th>
+                        <th class="text-center">Tanggal Expired</th>
                         <th class="text-center">File</th>
                         <th colspan="2" class="text-center">Action</th>
 
@@ -68,9 +69,10 @@
                         <td>{{ $value->il_alamat_perwakilan}}</td>
                         <td>{{ $value->il_alamat_cabang}}</td>
                         <td>{{ $value->il_lokasi}}</td>
+                        <td>{{ $value->il_exp_date}}</td>
                         <td><a href="/storage/{{ $value->il_file}}" target="_blank" class="btn btn-primary btn-icon btn-circle btn-md"><i class="fa fa-cloud-download-alt "></i></a></td>
-                        <td><a href="{{ route('ijin_lingkungan.edit',$value->il_id) }}"  class="btn btn-warning btn-icon btn-circle btn-md"><i class="fa fa-edit "></i></a></td>
-                        <td><a href="javascript:;"   data-id="{{$value->il_id}}" data-name="{{ $value->il_nama}}" class="btn btn-danger btn-icon btn-circle btn-md btnDelete"><i class="fa fa-trash "></i></a></td>
+                        <td><a href="{{ route('ijin_lingkungan.edit',$value->il_id) }}" class="btn btn-warning btn-icon btn-circle btn-md"><i class="fa fa-edit "></i></a></td>
+                        <td><a href="javascript:;" data-id="{{$value->il_id}}" data-name="{{ $value->il_nama}}" class="btn btn-danger btn-icon btn-circle btn-md btnDelete"><i class="fa fa-trash "></i></a></td>
 
                     </tr>
                     @endforeach
@@ -94,7 +96,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form  method="post" id="formDelete">
+                <form method="post" id="formDelete">
                     @csrf
                     @method('DELETE')
                     Apakah anda yakin menghapus <strong id="deleteName"></strong>
@@ -112,11 +114,11 @@
 @push('scripts')
 
 <script>
-    $('.btnDelete').click(function(){
+    $('.btnDelete').click(function() {
         var id = $(this).data('id');
         var name = $(this).data('name');
 
-        $('#formDelete').attr('action','<?php echo route('ijin_lingkungan.destroy','') ?>/'+id)
+        $('#formDelete').attr('action', '<?php echo route('ijin_lingkungan.destroy', '') ?>/' + id)
         $('#deleteName').html(name);
         $('#deleteModal').modal('show')
     })

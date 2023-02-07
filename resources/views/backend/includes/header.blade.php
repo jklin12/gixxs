@@ -7,7 +7,7 @@
 			<span class="icon-bar"></span>
 		</button>
 		<a href="index.html" class="navbar-brand">
-			<b class="mr-1 text-green">{{ config('site.site_name');  }}</b>
+			<img src="/assets/img/logo(2).png"  height="40px"  alt="" srcset="">&nbsp;<b class="mr-1 text-green">{{ config('site.site_name');  }}</b>
 			 
 		</a>
 		<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
@@ -26,7 +26,7 @@
 		</li>
 		<li class="dropdown navbar-user">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<img src="../assets/img/user/user-13.jpg" alt="" />
+				<img src="/assets/img/logo(2).png" alt="" />
 				<span class="d-none d-md-inline">{{ Auth::user()->name;}}</span> <b class="caret"></b>
 			</a>
 			<div class="dropdown-menu dropdown-menu-right">

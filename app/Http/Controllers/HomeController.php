@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DokumenKajianLingkungan;
+use App\Models\Galery;
 use App\Models\IjinLingkungan;
 use App\Models\KawasanEkosistemEsensial;
 use App\Models\Sppl;
@@ -12,8 +13,12 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $galery = Galery::
+            limit(5)->orderByDesc('created_at')->get();
+       
+        $load['galery'] = $galery;
 
-        return view('home/index');
+        return view('home/index',$load);
     }
 
     public function ijinLingkungan(Request $request)

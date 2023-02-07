@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,4 +27,9 @@ class IjinLingkungan extends Model
         'il_exp_date',
         'il_file_small',
     ];
+
+    public function getIlExpDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->isoFormat('dddd, D MMMM Y') : '';
+    }
 }

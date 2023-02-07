@@ -56,6 +56,7 @@ class IjinLingkunganController extends Controller
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
             'file' => 'required|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'exp_date' => ['required', 'date'], 
         ]);
 
         $postVal['il_nama'] = $request->nama;
@@ -67,6 +68,7 @@ class IjinLingkunganController extends Controller
         $postVal['il_alamat_cabang'] = $request->alamat_cabang ?? '';
         $postVal['il_alamat_perwakilan'] = $request->alamat_perwakilan ?? '';
         $postVal['il_lokasi'] = $request->lokasi ?? '';
+        $postVal['il_exp_date'] = $request->exp_date ?? '';
 
         $insert =  IjinLingkungan::create($postVal);
 
@@ -124,8 +126,9 @@ class IjinLingkunganController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:255'], 
             'file' => 'mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'exp_date' => ['required', 'date'], 
         ]);
 
         $postVal['il_nama'] = $request->nama;
@@ -137,6 +140,7 @@ class IjinLingkunganController extends Controller
         $postVal['il_alamat_cabang'] = $request->alamat_cabang ?? '';
         $postVal['il_alamat_perwakilan'] = $request->alamat_perwakilan ?? '';
         $postVal['il_lokasi'] = $request->lokasi ?? '';
+        $postVal['il_exp_date'] = $request->exp_date ?? '';
 
         IjinLingkungan::where('il_id', $id)->update($postVal);
 
