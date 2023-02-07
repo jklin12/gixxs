@@ -1,13 +1,10 @@
 @extends('layouts.default')
 
 @section('content')
-
 <div class="w-screen overflow-x-hidden">
-
     <header class="h-screen">
         <div class="h-full relative">
-            <video width="100%" height="100%" autoplay muted loop class="object-cover absolute right-0 bottom-0 min-w-full min-h-full" poster="http://localhost/simtaru/assets/img/tembakau.jpg">
-                <source src="http://localhost/simtaru/assets/vid/jalan.mp4" type="video/mp4">
+            <video width="100%" height="100%" autoplay muted loop class="object-cover absolute right-0 bottom-0 min-w-full min-h-full" poster="assets/img/home-bg.jpeg">
             </video>
 
             <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -16,8 +13,8 @@
 
                 <h2 class="capitalize text-white lg:text-3xl text-lg mb-4" data-aos-delay="500">{{ config('site.site_desc');  }}</h2>
 
-                <div class="relative lg:mt-32 mt-16 lg:mb-0 mb-24 lg:w-1/2" data-aos="fade-up" data-aos-delay="1000">
-                    <input name="search" type="text" id="search" placeholder="Cari Berita..." class="text-2xl w-full bg-white opacity-75 focus:opacity-100 shadow p-4 rounded-full" />
+                <div class="relative lg:mt-32 mt-16 lg:mb-0 mb-24 lg:w-1/2" data-aos-delay="1000">
+                    <input name="search" type="text" id="search" placeholder="Cari Ijin..." class="text-2xl w-full bg-white opacity-75 focus:opacity-100 shadow p-4 rounded-full" />
                     <button class="absolute right-0 top-0 bottom-0 px-6">
                         <i class="fas fa-search text-primary text-2xl"></i>
                     </button>
@@ -43,7 +40,7 @@
                                             <div class="flex space-x-4">
                                                 <time class="text-gray-200 text-xs" datetime="">
                                                     <i class="fas fa-calendar-alt text-primary"></i> &nbsp;{{ $vg->created_at}}
-                                                </time>
+                                                </time> 
                                             </div>
                                         </div>
                                         <h2 class=" text-lg font-bold mb-4 leading-relaxed ">
@@ -138,6 +135,9 @@
             </div>
         </div>
     </section>
+
+
+
 
 </div>
 @endsection
