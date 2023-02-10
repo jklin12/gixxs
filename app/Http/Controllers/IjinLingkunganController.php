@@ -14,7 +14,7 @@ class IjinLingkunganController extends Controller
      */
     public function index()
     {
-        $title = 'Dokumen Kawasan Ekosistem Esensial';
+        $title = 'Dokumen Ijin Lingkungan';
         $subtitle = '';
 
         $data = IjinLingkungan::orderByDesc('created_at')->paginate(5);

@@ -10,7 +10,7 @@
 <h1 class="page-header">{{ $title }}<small>{{ $subtitle }}</small></h1>
 
 <div class="mb-2">
-    <a href="{{ route('users.create') }}" class="btn btn-primary"><i class="fa fa-add"></i> Tambah Data</a>
+    <a href="{{ route('users.create') }}" class="btn btn-green btn-sm"><i class="fa fa-plus mr-1"></i> Tambah Data</a>
 </div>
 @if ($message = Session::get('success'))
 
@@ -55,8 +55,8 @@
                         <td>{{ $value->name}}</td>
                         <td>{{ $value->email}}</td>
                         <td>*****************</td>
-                        <td class="text-center"><a href="{{ route('users.edit',$value->id) }}" class="btn btn-warning btn-icon btn-circle btn-md"><i class="fa fa-edit "></i></a></td>
-                        <td class="text-center"><a href="javascript:;" data-id="{{$value->id}}" data-name="{{ $value->name}}" class="btn btn-danger btn-icon btn-circle btn-md btnDelete"><i class="fa fa-trash "></i></a></td>
+                        <td class="text-center"><a href="{{ route('users.edit',$value->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit mr-1"></i>Edit</a></td>
+                        <td class="text-center"><a href="javascript:;" data-id="{{$value->id}}" data-name="{{ $value->name}}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash mr-1"></i>Hapus</a></td>
 
                     </tr>
                     @endforeach

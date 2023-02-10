@@ -8,12 +8,10 @@
 @section('content')
 
 <ol class="float-xl-right">
-    <a href="{{ route('geojson.edit',$geojsonData['geojson_id']) }}" class="btn btn-warning btn-icon btn-circle btn-md mr-2">
-        <i class="fa fa-edit "></i>
-    </a>
-    <a href="#" id="btnDelete" class="btn btn-danger btn-icon btn-circle btn-md">
-        <i class="fa fa-trash "></i>
-    </a>
+     <a href="{{ route('geojson.edit',$geojsonData['geojson_id']) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit  mr-1 "></i>Edit Data</a>
+    <a href="#" id="btnDelete"  class="btn btn-sm btn-danger"><i class="fa fa-trash  mr-1 "></i>Hapus Data</a>
+  
+
 
 </ol>
 <h1 class="page-header">{{ $title }}<small>{{ $subtitle }}</small></h1>

@@ -11,7 +11,7 @@
 <h1 class="page-header">{{ $title }}<small>{{ $subtitle }}</small></h1>
 
 <div class="mb-2">
-    <a href="{{ route('geojson.create') }}" class="btn btn-primary"><i class="fa fa-add"></i> Tambah Data</a>
+    <a href="{{ route('geojson.create') }}" class="btn btn-green btn-sm"><i class="fa fa-plus  mr-1 "></i>Tambah Data</a>
 </div>
 @if ($message = Session::get('success'))
 

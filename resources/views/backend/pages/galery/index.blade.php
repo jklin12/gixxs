@@ -10,7 +10,7 @@
 <h1 class="page-header">{{ $title }}<small>{{ $subtitle }}</small></h1>
 
 <div class="mb-2">
-    <a href="{{ route('galery.create') }}" class="btn btn-primary"><i class="fa fa-add"></i> Tambah Data</a>
+    <a href="{{ route('galery.create') }}" class="btn btn-green btn-sm"><i class="fa fa-plus mr-1"></i> Tambah Data</a>
 </div>
 @if ($message = Session::get('success'))
 
@@ -59,8 +59,8 @@
                         <td>{{ $value->display}}</td>
                         <td><img src="{{ $value->file}}" width="100" alt="" srcset=""></td>  
                         <td>{{ $value->created_at}}</td>  
-                        <td><a href="{{ route('galery.edit',$value->id) }}"  class="btn btn-warning btn-icon btn-circle btn-md"><i class="fa fa-edit "></i></a></td>
-                        <td><a href="javascript:;"   data-id="{{$value->id}}" data-name="{{ $value->title}}" class="btn btn-danger btn-icon btn-circle btn-md btnDelete"><i class="fa fa-trash "></i></a></td>
+                        <td><a href="{{ route('galery.edit',$value->id) }}"  class="btn btn-warning btn-sm"><i class="fa fa-edit "></i>Edit</a></td>
+                        <td><a href="javascript:;"   data-id="{{$value->id}}" data-name="{{ $value->title}}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash mr-1"></i>Hapus</a></td>
 
                     </tr>
                     @endforeach

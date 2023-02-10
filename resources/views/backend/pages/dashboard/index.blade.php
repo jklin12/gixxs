@@ -24,7 +24,7 @@
 	<!-- begin col-3 -->
 	<div class="col-xl-3 col-md-6">
 		<div class="widget widget-stats bg-blue">
-			<div class="stats-icon"><i class="fa fa-desktop"></i></div>
+			<div class="stats-icon"><i class="fa fa-tree"></i></div>
 			<div class="stats-info">
 				<h4>Jumlah Ijin Lingkungan</h4>
 				<p>{{$il}}</p>
@@ -38,7 +38,7 @@
 	<!-- begin col-3 -->
 	<div class="col-xl-3 col-md-6">
 		<div class="widget widget-stats bg-info">
-			<div class="stats-icon"><i class="fa fa-link"></i></div>
+			<div class="stats-icon"><i class="fa fa-database"></i></div>
 			<div class="stats-info">
 				<h4>Jumlah Kawasan Ekosistem Esensial</h4>
 				<p>{{ $kes }}</p>
@@ -52,7 +52,7 @@
 	<!-- begin col-3 -->
 	<div class="col-xl-3 col-md-6">
 		<div class="widget widget-stats bg-orange">
-			<div class="stats-icon"><i class="fa fa-users"></i></div>
+			<div class="stats-icon"><i class="fa fa-file-archive"></i></div>
 			<div class="stats-info">
 				<h4>Jumlah Dokumen Kajian Lingkungan</h4>
 				<p>{{ $dkl }}</p>
@@ -66,7 +66,7 @@
 	<!-- begin col-3 -->
 	<div class="col-xl-3 col-md-6">
 		<div class="widget widget-stats bg-red">
-			<div class="stats-icon"><i class="fa fa-clock"></i></div>
+			<div class="stats-icon"><i class="fa fa-file"></i></div>
 			<div class="stats-info">
 				<h4>SPPL</h4>
 				<p>{{ $sppl}}</p>

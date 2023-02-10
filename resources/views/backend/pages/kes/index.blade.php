@@ -10,7 +10,7 @@
 <h1 class="page-header">{{ $title }}<small>{{ $subtitle }}</small></h1>
 
 <div class="mb-2">
-    <a href="{{ route('kes.create') }}" class="btn btn-primary"><i class="fa fa-add"></i> Tambah Data</a>
+    <a href="{{ route('kes.create') }}" class="btn btn-green btn-sm"><i class="fa fa-plus mr-1 "></i>Tambah Data</a>
 </div>
 @if ($message = Session::get('success'))
 
@@ -54,9 +54,9 @@
                         <td>{{ $loop->iteration + $data->firstItem() - 1 }}</td>
                         <td>{{ $value->kes_nama}}</td> 
                         <td>{{ $value->kes_exp_date}}</td> 
-                        <td><a href="/storage/{{ $value->kes_file}}" target="_blank" class="btn btn-primary btn-icon btn-circle btn-md"><i class="fa fa-cloud-download-alt "></i></a></td>
-                        <td><a href="{{ route('kes.edit',$value->kes_id) }}"  class="btn btn-warning btn-icon btn-circle btn-md"><i class="fa fa-edit "></i></a></td>
-                        <td><a href="javascript:;"   data-id="{{$value->kes_id}}" data-name="{{ $value->kes_nama}}" class="btn btn-danger btn-icon btn-circle btn-md btnDelete"><i class="fa fa-trash "></i></a></td>
+                        <td><a href="/storage/{{ $value->kes_file}}" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-cloud-download-alt mr-1"></i>Download</a></td>
+                        <td><a href="{{ route('kes.edit',$value->kes_id) }}"  class="btn btn-warning btn-sm"><i class="fa fa-edit mr-1"></i>Edit</a></td>
+                        <td><a href="javascript:;"   data-id="{{$value->kes_id}}" data-name="{{ $value->kes_nama}}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash mr-1"></i>Hapus</a></td>
 
                     </tr>
                     @endforeach

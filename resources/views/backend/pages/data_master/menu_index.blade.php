@@ -11,7 +11,7 @@
 <h1 class="page-header">{{ $title }}<small>{{ $subtitle }}</small></h1>
 
 <div class="mb-2">
-    <a href="{{ route('menu.create') }}" class="btn btn-primary" data-toggle="modal" data-target="#addMenuModal"><i class="fa fa-add"></i> Tambah Menu</a>
+    <a href="{{ route('menu.create') }}" class="btn btn-green btn-sm" data-toggle="modal" data-target="#addMenuModal"><i class="fa fa-plus mr-1"></i> Tambah Menu</a>
 </div>
 
 @if ($message = Session::get('success'))
@@ -51,7 +51,8 @@
 
                 <thead>
                     <tr>
-                        <th colspan="2">No.</th>
+                        <th ></th>
+                        <th >No.</th>
                         <th>Menu</th>
                         <th>Tampil</th>
                         <td colspan="3" class="text-center">Action</td>
@@ -71,18 +72,20 @@
                         <td>{{ $value['menu_name']}}</td>
                         <td>{{ $value['menu_show'] ? 'Ya' : 'Tidak'}}</td>
                         <td>
-                            <a href="#" class="btn btn-success btn-icon btn-circle addCatBtn" data-id="{{ $value['menu_id']}}">
-                                <i class="fa fa-plus"></i>
+                            <a href="#" class="btn btn-green btn-sm addCatBtn" data-id="{{ $value['menu_id']}}">
+                                <i class="fa fa-plus mr-1">Tambah Kategori</i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-warning btn-icon btn-circle editMenuBtn" data-id="{{ $value['menu_id']}}" data-name="{{ $value['menu_name']}}" data-display="{{ $value['menu_show'] ?? 0 }}">
-                                <i class="fa fa-edit"></i>
+                            <a href="#" class="btn btn-warning btn-sm editMenuBtn" data-id="{{ $value['menu_id']}}" data-name="{{ $value['menu_name']}}" data-display="{{ $value['menu_show'] ?? 0 }}">
+                                <i class="fa fa-edit mr-1"></i>
+                                Edit Menu
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-danger btn-icon btn-circle deleteMenuBtn" data-id="{{ $value['menu_id']}}" data-name="{{ $value['menu_name']}}">
-                                <i class="fa fa-trash"></i>
+                            <a href="#" class="btn btn-danger btn-sm deleteMenuBtn" data-id="{{ $value['menu_id']}}" data-name="{{ $value['menu_name']}}">
+                                <i class="fa fa-trash mr-1"></i>
+                                Hapus Menu
                             </a>
                         </td>
                     </tr>
@@ -111,13 +114,15 @@
                                             <td>{{ $vcat['fill_opacity']}}</td>
 
                                             <td>
-                                                <a href="#" class="btn btn-warning btn-icon btn-circle btnEditCategory" data-id="{{ $vcat['category_id']}}" data-menu="{{ $vcat['menu']}}" data-name="{{ $vcat['category_name']}}" data-display="{{ $vcat['display'] ?? 0 }}" data-color="{{ $vcat['fill_color']}}" data-opacity="{{ $vcat['fill_opacity']}}">
-                                                    <i class="fa fa-edit"></i>
+                                                <a href="#" class="btn btn-warning btn-sm btnEditCategory" data-id="{{ $vcat['category_id']}}" data-menu="{{ $vcat['menu']}}" data-name="{{ $vcat['category_name']}}" data-display="{{ $vcat['display'] ?? 0 }}" data-color="{{ $vcat['fill_color']}}" data-opacity="{{ $vcat['fill_opacity']}}">
+                                                    <i class="fa fa-edit mr-1"></i>
+                                                    Edit Kategori
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-danger btn-icon btn-circle deleteCatBtn" data-id="{{ $vcat['category_id']}}" data-name="{{ $vcat['category_name']}}">
-                                                    <i class="fa fa-trash"></i>
+                                                <a href="#" class="btn btn-danger btn-sm deleteCatBtn" data-id="{{ $vcat['category_id']}}" data-name="{{ $vcat['category_name']}}">
+                                                    <i class="fa fa-trash mr-1"></i>
+                                                    Hapus Kategori
                                                 </a>
                                             </td>
                                         </tr>
