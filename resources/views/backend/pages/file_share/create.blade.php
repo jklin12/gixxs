@@ -32,7 +32,7 @@
         <form action="{{ route('file_share.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group row m-b-15">
-                <label class="col-form-label col-md-3">Tampil</label>
+                <label class="col-form-label col-md-3">Menu</label>
                 <div class="col-md-9">
                     <select class="form-control" name="menu" value="{{ old('menu') }}">
                         <option value=""></option>

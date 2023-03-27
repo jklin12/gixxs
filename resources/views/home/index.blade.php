@@ -127,6 +127,16 @@
             <h3 class="text-center font-semibold mb-2">SPPL</h3>
             <h4 class="text-center text-gray-700 text-sm">SPPL</h4>
         </a>
+        <a href="{{ route('home_proker') }}" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
+            <img src="assets/img/undraw_garden.png" class="mb-4 object-contain h-28">
+            <h3 class="text-center font-semibold mb-2">Program Kerja</h3>
+            <h4 class="text-center text-gray-700 text-sm">Program Kerja</h4>
+        </a>
+        <a href="{{ route('home_file') }}" class="block bg-white shadow-lg rounded-xl p-4 flex flex-col items-center transition-transform ease-out hover:scale-110">
+            <img src="assets/img/undraw_road.png" class="mb-4 object-contain h-28">
+            <h3 class="text-center font-semibold mb-2">File Share</h3>
+            <h4 class="text-center text-gray-700 text-sm">File Share</h4>
+        </a>
 
     </section>
 

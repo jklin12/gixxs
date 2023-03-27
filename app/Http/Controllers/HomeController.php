@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\DokumenKajianLingkungan;
+use App\Models\FileShare;
 use App\Models\Galery;
 use App\Models\IjinLingkungan;
 use App\Models\KawasanEkosistemEsensial;
+use App\Models\Proker;
 use App\Models\Sppl;
 use Illuminate\Http\Request;
 
@@ -79,5 +81,31 @@ class HomeController extends Controller
         $load['data'] = $data;
 
         return view('home/sppl', $load);
+    }
+    public function proker(Request $request)
+    {
+
+        $title = "Program Kerja";
+
+        $load['title'] = $title;
+
+        $data = Proker::orderByDesc('created_at')->get();
+        //echo json_encode($data->toArray());die;
+        $load['data'] = $data;
+
+        return view('home/proker', $load);
+    }
+    public function file(Request $request)
+    {
+
+        $title = "File Share";
+
+        $load['title'] = $title;
+
+        $data = FileShare::orderByDesc('created_at')->get();
+        //echo json_encode($data->toArray());die;
+        $load['data'] = $data;
+
+        return view('home/file', $load);
     }
 }

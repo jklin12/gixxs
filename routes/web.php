@@ -49,6 +49,8 @@ Route::get('/kawasan_es/{data_id}', [HomeController::class, 'kesDetail'])->name(
 Route::get('/dokumen_kl', [HomeController::class, 'dkl'])->name('dkl');
 Route::get('/dokumen_kl/{data_id}', [HomeController::class, 'dklDetail'])->name('dkl.detail');
 Route::get('/sppl', [HomeController::class, 'sppl'])->name('sppl');
+Route::get('/proker', [HomeController::class, 'proker'])->name('home_proker');
+Route::get('/file', [HomeController::class, 'file'])->name('home_file');
 Route::get('/sppl/{data_id}', [HomeController::class, 'spplDetail'])->name('sppl.detail');
 
 Route::middleware(['auth', 'user-access:super-admin'])->group(function () {

@@ -33,7 +33,7 @@
             @csrf
             @method('put')
             <div class="form-group row m-b-15">
-                <label class="col-form-label col-md-3">Tampil</label>
+                <label class="col-form-label col-md-3">Referensi</label>
                 <div class="col-md-9">
                     <select class="form-control" name="ref_proker_id"  id="edit-ref">
                         <option value=""></option>
