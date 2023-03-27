@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGeojsonPropertiesTable extends Migration
+class UpdateFileMenu extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateGeojsonPropertiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('geojson_properties', function (Blueprint $table) {
-            $table->id('prop_id');
-            $table->integer('geojson_id');
-            $table->string('table_key');
+        Schema::table('file_menus', function (Blueprint $table) {
+            
+            $table->string('file_menu_file')->nullable()->change();
             
         });
     }
@@ -28,6 +27,6 @@ class CreateGeojsonPropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('geojson_properties');
+        //
     }
 }

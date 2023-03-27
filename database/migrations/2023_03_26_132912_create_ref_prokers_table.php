@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGeojsonPropertiesTable extends Migration
+class CreateRefProkersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateGeojsonPropertiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('geojson_properties', function (Blueprint $table) {
-            $table->id('prop_id');
-            $table->integer('geojson_id');
-            $table->string('table_key');
-            
+        Schema::create('ref_prokers', function (Blueprint $table) {
+            $table->id('ref_proker_id');
+            $table->string('ref_proker_name');
         });
     }
 
@@ -28,6 +26,6 @@ class CreateGeojsonPropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('geojson_properties');
+        Schema::dropIfExists('ref_prokers');
     }
 }

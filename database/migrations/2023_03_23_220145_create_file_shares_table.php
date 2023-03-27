@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMenusTable extends Migration
+class CreateFileSharesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
-       Schema::create('menus', function (Blueprint $table) {
-            $table->id('menu_id');
-            $table->integer('menu_order')->nullable();
-            $table->string('menu_name')->nullable();
-            $table->tinyInteger('menu_show')->default(0)->nullable();
+        Schema::create('file_shares', function (Blueprint $table) {
+            $table->id('file_share_id');
+            $table->integer('file_share_menu');
+            $table->string('file_share_title');
+            $table->string('file_share_file');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('menus');
+        Schema::dropIfExists('file_shares');
     }
 }

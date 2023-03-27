@@ -13,8 +13,8 @@ class CreateIjinLingkungansTable extends Migration
      */
     public function up()
     {
-        /*Schema::create('ijin_lingkungans', function (Blueprint $table) {
-            $table->integer('il_id')->primary()->autoIncrement();
+        Schema::create('ijin_lingkungans', function (Blueprint $table) {
+            $table->id('il_id');
             $table->string('il_nama')->nullable();
             $table->string('il_nib')->nullable();
             $table->string('il_jenis_usaha')->nullable();
@@ -27,7 +27,7 @@ class CreateIjinLingkungansTable extends Migration
             $table->text('il_file')->nullable();
             $table->text('il_file_small')->nullable();
             $table->timestamps();
-        });*/
+        });
     }
 
     /**

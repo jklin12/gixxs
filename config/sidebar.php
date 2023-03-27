@@ -68,6 +68,20 @@ return [
 
 		],
 		[
+			'icon' => 'fa fa-file',
+			'title' => 'Share Files ',
+			'url' => '/dashboard/file_share',
+			'route-name' => 'file_share.index'
+
+		],
+		[
+			'icon' => 'fa fa-table',
+			'title' => 'Program Kerja ',
+			'url' => '/dashboard/proker',
+			'route-name' => 'proker.index'
+
+		],
+		[
 			'icon' => 'fa fa-database',
 			'title' => 'Data Master',
 			'url' => 'javascript:;',
@@ -75,8 +89,18 @@ return [
 			'sub_menu' => [
 				[
 					'url' => '/dashboard/menu',
-					'title' => 'Menu Geojson',
+					'title' => 'Referensi Menu Geojson',
 					'route-name' => 'menu.index'
+				],
+				[
+					'url' => '/dashboard/menu_file',
+					'title' => 'Referensi Menu File',
+					'route-name' => 'menu_file.index'
+				],
+				[
+					'url' => '/dashboard/ref_proker',
+					'title' => 'Referensi Proker',
+					'route-name' => 'ref_proker.index'
 				],
 				[
 					'url' => '/dashboard/users',

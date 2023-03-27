@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMenusTable extends Migration
+class CreateProkersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
-       Schema::create('menus', function (Blueprint $table) {
-            $table->id('menu_id');
-            $table->integer('menu_order')->nullable();
-            $table->string('menu_name')->nullable();
-            $table->tinyInteger('menu_show')->default(0)->nullable();
+        Schema::create('prokers', function (Blueprint $table) {
+            $table->id('proker_id');
+            $table->integer('ref_proker_id');
+            $table->string('proker_title');
+            $table->text('proker_body');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('menus');
+        Schema::dropIfExists('prokers');
     }
 }

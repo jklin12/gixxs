@@ -14,7 +14,8 @@ class GeojsonCategory extends Migration
     public function up()
     {
         Schema::create('geojson_categories', function (Blueprint $table) {
-            $table->integer('category_id')->primary()->autoIncrement();
+            //$table->integer('category_id')->autoIncrement();
+            $table->id('category_id');
             $table->string('category_name');
             $table->string('fill_color');
             $table->double('fill_opacity')->nullable();

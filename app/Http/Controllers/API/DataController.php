@@ -4,11 +4,15 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\DokumenKajianLingkungan;
+use App\Models\FileMenu;
+use App\Models\FileShare;
 use App\Models\Galery;
 use App\Models\GeojsonCategory;
 use App\Models\IjinLingkungan;
 use App\Models\KawasanEkosistemEsensial;
 use App\Models\Option;
+use App\Models\Proker;
+use App\Models\RefProker;
 use App\Models\Sppl;
 use Illuminate\Http\Request;
 
@@ -88,6 +92,51 @@ class DataController extends Controller
 
         $response['status'] = True;
         $response['data'] = Galery::where('display','1')->orderByDesc('created_at')->get();
+
+        return response()->json($response, 200);
+    }
+
+    public function fileMenu()
+    {
+
+        $response['status'] = True;
+        $response['data'] = FileMenu::where('file_menu_display','1')->get();
+
+        return response()->json($response, 200);
+    }
+
+    public function fileShare($menuId)
+    {
+
+        $fileShare = FileShare::where('file_share_menu',$menuId)->get();
+        foreach ($fileShare as $key => $value) {
+            $fileShare->menu = $value->menu->ref_menu_name;
+        }
+        
+        $response['status'] = True;
+        $response['data'] = $fileShare;
+
+        return response()->json($response, 200);
+    }
+    public function refProker()
+    {
+
+        $response['status'] = True;
+        $response['data'] = RefProker::get();
+
+        return response()->json($response, 200);
+    }
+
+    public function proker($refProkerId)
+    {
+
+        $fileShare = Proker::where('ref_proker_id',$refProkerId)->get();
+        foreach ($fileShare as $key => $value) {
+            $fileShare->ref = $value->ref;
+        }
+
+        $response['status'] = True;
+        $response['data'] = $fileShare;
 
         return response()->json($response, 200);
     }

@@ -14,7 +14,8 @@ class CreateGeojsonDataTable extends Migration
     public function up()
     {
         Schema::create('geojson_data', function (Blueprint $table) {
-            $table->integer('data_id')->primary()->autoIncrement();
+            //$table->integer('data_id')->autoIncrement();
+            $table->id('data_id');
             $table->integer('geojson_id');
             $table->longText('data_properties');
             $table->longText('data_type');

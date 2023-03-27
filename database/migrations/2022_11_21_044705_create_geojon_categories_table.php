@@ -13,7 +13,7 @@ class CreateGeojonCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('geojon_categories', function (Blueprint $table) {
+        /*Schema::create('geojon_categories', function (Blueprint $table) {
             $table->string('category_id');
             $table->string('category_name');
             $table->string('fill_color');
@@ -21,7 +21,7 @@ class CreateGeojonCategoriesTable extends Migration
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
