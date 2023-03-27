@@ -16,7 +16,7 @@
     </div>
 </header>
 <section class="mt-20 container " style="margin-bottom: 5rem;">
-    <div class="grid lg:grid-cols-3 gap-8">
+    <div class="grid  gap-8">
         <main class="lg:col-span-2">
 
             <div class="grid gap-8">
